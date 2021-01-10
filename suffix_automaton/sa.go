@@ -23,8 +23,6 @@ func create() *Instance {
 	return &Instance{
 		states: []state{
 			{
-				Len:  0,
-				Link: -1,
 				Next: make(stateMap),
 			},
 		},
@@ -35,31 +33,31 @@ func (sa *Instance) addSymbol(sym rune) {
 	p := sa.lastState()
 	s, cur := sa.appendState(state{
 		Len:  sa.states[p].Len + 1,
+		Link: 0,
 		Next: make(stateMap),
 	})
-	for ; p >= 0; p = s[p].Link {
-		if _, present := s[p].Next[sym]; present {
-			break
-		}
+	for ; s[p].Next[sym] == 0; p = s[p].Link {
 		s[p].Next[sym] = cur
+		if p == 0 {
+			return
+		}
 	}
-	if p < 0 {
-		s[cur].Link = 0
-	} else if q := s[p].Next[sym]; s[p].Len+1 == s[q].Len {
+	q := s[p].Next[sym]
+	if s[p].Len+1 == s[q].Len {
 		s[cur].Link = q
-	} else {
-		s, clone := sa.appendState(state{
-			Len:  s[p].Len + 1,
-			Link: s[q].Link,
-			Next: make(stateMap),
-		})
-		for k, v := range s[q].Next {
-			s[clone].Next[k] = v
-		}
-		s[q].Link, s[cur].Link = clone, clone
-		for ; p >= 0 && s[p].Next[sym] == q; p = s[p].Link {
-			s[p].Next[sym] = clone
-		}
+		return
+	}
+	s, clone := sa.appendState(state{
+		Len:  s[p].Len + 1,
+		Link: s[q].Link,
+		Next: make(stateMap),
+	})
+	for k, v := range s[q].Next {
+		s[clone].Next[k] = v
+	}
+	s[q].Link, s[cur].Link = clone, clone
+	for ; s[p].Next[sym] == q; p = s[p].Link {
+		s[p].Next[sym] = clone
 	}
 }
 

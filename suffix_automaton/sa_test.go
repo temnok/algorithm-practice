@@ -16,7 +16,7 @@ var examples = []struct {
 			states: []state{
 				{ // 0
 					Len:  0,
-					Link: -1,
+					Link: 0,
 					Next: stateMap{'a': 1},
 				},
 				{ // 1: a
@@ -33,7 +33,7 @@ var examples = []struct {
 			states: []state{
 				{ // 0
 					Len:  0,
-					Link: -1,
+					Link: 0,
 					Next: stateMap{'a': 1},
 				},
 				{ // 1: a
@@ -55,7 +55,7 @@ var examples = []struct {
 			states: []state{
 				{ // 0
 					Len:  0,
-					Link: -1,
+					Link: 0,
 					Next: stateMap{'a': 1, 'b': 6},
 				},
 				{ // 1: a
@@ -97,7 +97,7 @@ var examples = []struct {
 			states: []state{
 				{ // 0
 					Len:  0,
-					Link: -1,
+					Link: 0,
 					Next: stateMap{'a': 1, 'b': 2},
 				},
 				{ // 1: a
@@ -119,7 +119,7 @@ var examples = []struct {
 			states: []state{
 				{ // 0
 					Len:  0,
-					Link: -1,
+					Link: 0,
 					Next: stateMap{'a': 1, 'b': 2},
 				},
 				{ // 1: a
@@ -151,7 +151,7 @@ var examples = []struct {
 			states: []state{
 				{ // 0
 					Len:  0,
-					Link: -1,
+					Link: 0,
 					Next: stateMap{'a': 1, 'b': 4},
 				},
 				{ // 1: a
@@ -183,7 +183,7 @@ var examples = []struct {
 			states: []state{
 				{ // 0
 					Len:  0,
-					Link: -1,
+					Link: 0,
 					Next: stateMap{'a': 1, 'b': 4, 'c': 8},
 				},
 				{ // 1: a
@@ -288,7 +288,7 @@ func TestInstance_UniqueSubstringsCount(t *testing.T) {
 	}
 }
 
-func TestUniqueSubstringsCount_Randomized(t *testing.T) {
+func TestInstance_UniqueSubstringsCount_Randomized(t *testing.T) {
 	r := rand.New(rand.NewSource(0))
 	for x := 0; x < 1000; x++ {
 		buf := make([]byte, 3+r.Intn(50))
