@@ -2,6 +2,7 @@ package suffix_automaton
 
 import (
 	"encoding/json"
+	"math/bits"
 	"math/rand"
 	"testing"
 	"unsafe"
@@ -335,7 +336,7 @@ func TestInstance_SetCapacity(t *testing.T) {
 func TestInstance_Append_error(t *testing.T) {
 	sa := New()
 	if e, a := 1, sa.Append([]byte{0, 1, 4, 2, 3}); e != a {
-		t.Errorf("Expected: %#v\n  Actual: %#v", e, a)
+		t.Errorf("Expected: %v\n  Actual: %v", e, a)
 	}
 }
 
@@ -372,4 +373,16 @@ func fromString(t *testing.T, str string) *Instance {
 	sa := New()
 	sa.Append(buf)
 	return sa
+}
+
+func xTestHuge(t *testing.T) {
+	str := make([]byte, 250_000_000)
+	for i, _ := range str {
+		str[i] = byte((0b11 & (i * bits.OnesCount(uint(i)))))
+	}
+	sa := New()
+	sa.SetCapacity(1 + 2*len(str))
+	if e, a := 0, sa.Append(str); e != a {
+		t.Errorf("Expected: %v\n  Actual: %v", e, a)
+	}
 }
