@@ -315,6 +315,34 @@ func TestInstance_UniqueSubstringsCount_Randomized(t *testing.T) {
 	}
 }
 
+func TestInstance_SetCapacity(t *testing.T) {
+	sa := fromString(t, "AB")
+	var expected, actual [3]state
+	copy(expected[:], sa.states)
+	sa.SetCapacity(1000)
+	if e, a := 1000, cap(sa.states); e != a {
+		t.Errorf("Expected: %v\n  Actual: %v", e, a)
+	}
+	if e, a := 3, len(sa.states); e != a {
+		t.Errorf("Expected: %v\n  Actual: %v", e, a)
+	}
+	copy(actual[:], sa.states)
+	if expected != actual {
+		t.Errorf("Expected: %#v\n  Actual: %#v", expected, actual)
+	}
+}
+
+func TestInstance_Append_error(t *testing.T) {
+	sa := New()
+	e, a := sa.Append([]byte{0, 1, 4, 2, 3}), ""
+	if e != nil {
+		a = e.Error()
+	}
+	if e := "Append: 2-th symbol with code 4 is not between 0 and 3"; e != a {
+		t.Errorf("Expected: %#v\n  Actual: %#v", e, a)
+	}
+}
+
 func TestSizeOfState(t *testing.T) {
 	if e, a := uintptr(6*4), unsafe.Sizeof(state{}); e != a {
 		t.Errorf("unsafe.Sizeof(state{}): \nExpected: %v\n  Actual: %v", e, a)
