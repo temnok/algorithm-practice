@@ -1,7 +1,6 @@
 package suffix_automaton
 
 import (
-	"bytes"
 	"encoding/json"
 	"math/rand"
 	"testing"
@@ -346,6 +345,7 @@ func fromString(t *testing.T, str string) *Instance {
 	for i, sym := range buf {
 		buf[i] = sym - 'A'
 	}
-	sa, _ := FromReader(bytes.NewReader(buf))
+	sa := New()
+	sa.Append(buf)
 	return sa
 }

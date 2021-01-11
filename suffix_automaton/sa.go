@@ -2,7 +2,6 @@ package suffix_automaton
 
 import (
 	"fmt"
-	"io"
 )
 
 type Instance struct {
@@ -16,37 +15,31 @@ type state struct {
 	Next      stateMap
 }
 
-func FromReader(r io.Reader) (*Instance, error) {
-	sa, buf := create(), make([]byte, 1024)
-	for count := 0; ; {
-		n, e := r.Read(buf)
-		if e == io.EOF {
-			break
-		}
-		if e != nil {
-			return nil, e
-		}
-		for i, sym := range buf[:n] {
-			if int(sym) >= len(stateMap{}) {
-				msg := "FromReader: %v-th symbol with code %v is not between 0 and %v"
-				return nil, fmt.Errorf(msg, count+i, sym, len(stateMap{})-1)
-			}
-			sa.addSymbol(int(sym))
-		}
-		count += n
-	}
-	return sa, nil
+func New() *Instance {
+	return &Instance{states: []state{{}}}
 }
 
-func create() *Instance {
-	return &Instance{
-		states: []state{
-			{},
-		},
+func (sa *Instance) SetCapacity(c int) {
+	if cap(sa.states) < c {
+		s := make([]state, len(sa.states), c)
+		copy(s, sa.states)
+		sa.states = s
 	}
 }
 
-func (sa *Instance) addSymbol(sym int) {
+func (sa *Instance) Append(buf []byte) error {
+	alphabetSize := byte(len(stateMap{}))
+	for i, sym := range buf {
+		if sym >= alphabetSize {
+			msg := "Append: %v-th symbol with code %v is not between 0 and %v"
+			return fmt.Errorf(msg, i, sym, alphabetSize-1)
+		}
+		sa.addSymbol(sym)
+	}
+	return nil
+}
+
+func (sa *Instance) addSymbol(sym byte) {
 	p := sa.lastState()
 	s, cur := sa.appendState(state{
 		Len:  sa.states[p].Len + 1,
