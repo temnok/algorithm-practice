@@ -27,9 +27,9 @@ func (sa *Instance) SetCapacity(c int) {
 	}
 }
 
-func (sa *Instance) Append(buf []byte) error {
+func (sa *Instance) Append(str []byte) error {
 	alphabetSize := byte(len(stateMap{}))
-	for i, sym := range buf {
+	for i, sym := range str {
 		if sym >= alphabetSize {
 			msg := "Append: %v-th symbol with code %v is not between 0 and %v"
 			return fmt.Errorf(msg, i, sym, alphabetSize-1)
@@ -80,7 +80,7 @@ func (sa *Instance) lastState() uint32 {
 	}
 }
 
-func (sa *Instance) UniqueSubstringsCount() (count int) {
+func (sa *Instance) DistinctSubstringsCount() (count int) {
 	for _, s := range sa.states[1:] {
 		count += int(s.Len) - int(sa.states[s.Link].Len)
 	}

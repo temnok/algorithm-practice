@@ -275,7 +275,7 @@ func TestInstance_LastState(t *testing.T) {
 	}
 }
 
-func TestInstance_UniqueSubstringsCount(t *testing.T) {
+func TestInstance_DistinctSubstringsCount(t *testing.T) {
 	examples := []struct {
 		str      string
 		expected int
@@ -290,13 +290,13 @@ func TestInstance_UniqueSubstringsCount(t *testing.T) {
 		{"ABBCBC", 17},
 	}
 	for _, x := range examples {
-		if e, a := x.expected, fromString(t, x.str).UniqueSubstringsCount(); e != a {
-			t.Errorf("fromString(\"%v\").UniqueSubstringsCount(): \nExpected: %v\n  Actual: %v", x.str, e, a)
+		if e, a := x.expected, fromString(t, x.str).DistinctSubstringsCount(); e != a {
+			t.Errorf("fromString(\"%v\").DistinctSubstringsCount(): \nExpected: %v\n  Actual: %v", x.str, e, a)
 		}
 	}
 }
 
-func TestInstance_UniqueSubstringsCount_Randomized(t *testing.T) {
+func TestInstance_DistinctSubstringsCount_Randomized(t *testing.T) {
 	r := rand.New(rand.NewSource(0))
 	for x := 0; x < 1_000; x++ {
 		buf := make([]byte, 50)
@@ -309,8 +309,8 @@ func TestInstance_UniqueSubstringsCount_Randomized(t *testing.T) {
 				unique[str[i:j]] = true
 			}
 		}
-		if e, a := len(unique), fromString(t, str).UniqueSubstringsCount(); e != a {
-			t.Errorf("fromString(\"%v\").UniqueSubstringsCount(): \nExpected: %v\n  Actual: %v", str, e, a)
+		if e, a := len(unique), fromString(t, str).DistinctSubstringsCount(); e != a {
+			t.Errorf("fromString(\"%v\").DistinctSubstringsCount(): \nExpected: %v\n  Actual: %v", str, e, a)
 		}
 	}
 }
