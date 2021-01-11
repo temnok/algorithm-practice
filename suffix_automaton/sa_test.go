@@ -334,11 +334,7 @@ func TestInstance_SetCapacity(t *testing.T) {
 
 func TestInstance_Append_error(t *testing.T) {
 	sa := New()
-	e, a := sa.Append([]byte{0, 1, 4, 2, 3}), ""
-	if e != nil {
-		a = e.Error()
-	}
-	if e := "Append: 2-th symbol with code 4 is not between 0 and 3"; e != a {
+	if e, a := 1, sa.Append([]byte{0, 1, 4, 2, 3}); e != a {
 		t.Errorf("Expected: %#v\n  Actual: %#v", e, a)
 	}
 }

@@ -1,9 +1,5 @@
 package suffix_automaton
 
-import (
-	"fmt"
-)
-
 type Instance struct {
 	states []state
 }
@@ -27,19 +23,19 @@ func (sa *Instance) SetCapacity(c int) {
 	}
 }
 
-func (sa *Instance) Append(str []byte) error {
-	alphabetSize := byte(len(stateMap{}))
-	for i, sym := range str {
+func (sa *Instance) Append(str []byte) int {
+	alphabetSize, errors := byte(len(stateMap{})), 0
+	for _, sym := range str {
 		if sym >= alphabetSize {
-			msg := "Append: %v-th symbol with code %v is not between 0 and %v"
-			return fmt.Errorf(msg, i, sym, alphabetSize-1)
+			errors++
+			continue
 		}
-		sa.addSymbol(sym)
+		sa.add(sym)
 	}
-	return nil
+	return errors
 }
 
-func (sa *Instance) addSymbol(sym byte) {
+func (sa *Instance) add(sym byte) {
 	p := sa.lastState()
 	s, cur := sa.appendState(state{
 		Len:  sa.states[p].Len + 1,
