@@ -1,40 +1,56 @@
 package suffix_automaton
 
+import (
+	"fmt"
+	"io"
+)
+
 type Instance struct {
 	states []state
 }
 
-type stateMap map[rune]int
+type stateMap [4]uint32
 
 type state struct {
-	Len, Link int
+	Len, Link uint32
 	Next      stateMap
 }
 
-func FromString(str string) *Instance {
-	sa := create()
-	for _, sym := range str {
-		sa.addSymbol(sym)
+func FromReader(r io.Reader) (*Instance, error) {
+	sa, buf := create(), make([]byte, 1024)
+	for count := 0; ; {
+		n, e := r.Read(buf)
+		if e == io.EOF {
+			break
+		}
+		if e != nil {
+			return nil, e
+		}
+		for i, sym := range buf[:n] {
+			if int(sym) >= len(stateMap{}) {
+				msg := "FromReader: %v-th symbol with code %v is not between 0 and %v"
+				return nil, fmt.Errorf(msg, count+i, sym, len(stateMap{})-1)
+			}
+			sa.addSymbol(int(sym))
+		}
+		count += n
 	}
-	return sa
+	return sa, nil
 }
 
 func create() *Instance {
 	return &Instance{
 		states: []state{
-			{
-				Next: make(stateMap),
-			},
+			{},
 		},
 	}
 }
 
-func (sa *Instance) addSymbol(sym rune) {
+func (sa *Instance) addSymbol(sym int) {
 	p := sa.lastState()
 	s, cur := sa.appendState(state{
 		Len:  sa.states[p].Len + 1,
 		Link: 0,
-		Next: make(stateMap),
 	})
 	for ; s[p].Next[sym] == 0; p = s[p].Link {
 		s[p].Next[sym] = cur
@@ -50,24 +66,21 @@ func (sa *Instance) addSymbol(sym rune) {
 	s, clone := sa.appendState(state{
 		Len:  s[p].Len + 1,
 		Link: s[q].Link,
-		Next: make(stateMap),
+		Next: s[q].Next,
 	})
-	for k, v := range s[q].Next {
-		s[clone].Next[k] = v
-	}
 	s[q].Link, s[cur].Link = clone, clone
 	for ; s[p].Next[sym] == q; p = s[p].Link {
 		s[p].Next[sym] = clone
 	}
 }
 
-func (sa *Instance) appendState(s state) ([]state, int) {
+func (sa *Instance) appendState(s state) ([]state, uint32) {
 	sa.states = append(sa.states, s)
-	return sa.states, len(sa.states) - 1
+	return sa.states, uint32(len(sa.states) - 1)
 }
 
-func (sa *Instance) lastState() int {
-	if i := len(sa.states) - 1; i > 0 && sa.states[i-1].Len > sa.states[i].Len {
+func (sa *Instance) lastState() uint32 {
+	if i := uint32(len(sa.states)) - 1; i > 0 && sa.states[i-1].Len > sa.states[i].Len {
 		return i - 1
 	} else {
 		return i
@@ -76,7 +89,7 @@ func (sa *Instance) lastState() int {
 
 func (sa *Instance) UniqueSubstringsCount() (count int) {
 	for _, s := range sa.states[1:] {
-		count += s.Len - sa.states[s.Link].Len
+		count += int(s.Len) - int(sa.states[s.Link].Len)
 	}
 	return
 }
