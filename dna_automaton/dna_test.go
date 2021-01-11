@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"math/rand"
 	"testing"
+	"unsafe"
 )
 
 var examples = []struct {
@@ -233,12 +234,12 @@ var examples = []struct {
 
 func TestExamples(t *testing.T) {
 	for _, x := range examples {
-		expected, actual := x.expected, FromString(x.str)
-		if e, a := len(expected.states), len(actual.states); e != a {
+		actual := fromString(t, x.str)
+		if e, a := len(x.expected.states), len(actual.states); e != a {
 			t.Errorf("Len(FromString(\"%v\").states)): \nExpected: %v\n  Actual: %v", x.str, e, a)
 			continue
 		}
-		for j, expectedState := range expected.states {
+		for j, expectedState := range x.expected.states {
 			if e, a := toJson(t, expectedState), toJson(t, actual.states[j]); e != a {
 				t.Errorf("FromString(\"%v\").states[%v]: \nExpected: %v\n  Actual: %v", x.str, j, e, a)
 			}
@@ -261,7 +262,7 @@ func TestInstance_LastState(t *testing.T) {
 		{"ATTCTC", 7},
 	}
 	for _, x := range examples {
-		if e, a := x.expected, FromString(x.str).lastState(); e != a {
+		if e, a := x.expected, fromString(t, x.str).lastState(); e != a {
 			t.Errorf("FromString(\"%v\").lastState(): \nExpected: %v\n  Actual: %v", x.str, e, a)
 		}
 	}
@@ -282,7 +283,7 @@ func TestInstance_UniqueSubstringsCount(t *testing.T) {
 		{"ATTCTC", 17},
 	}
 	for _, x := range examples {
-		if e, a := x.expected, FromString(x.str).UniqueSubstringsCount(); e != a {
+		if e, a := x.expected, fromString(t, x.str).UniqueSubstringsCount(); e != a {
 			t.Errorf("FromString(\"%v\").UniqueSubstringsCount(): \nExpected: %v\n  Actual: %v", x.str, e, a)
 		}
 	}
@@ -290,12 +291,11 @@ func TestInstance_UniqueSubstringsCount(t *testing.T) {
 
 func TestInstance_UniqueSubstringsCount_Randomized(t *testing.T) {
 	r := rand.New(rand.NewSource(0))
-	alphabet := "ATCG"
-	for x := 0; x < 1000; x++ {
-		buf := make([]byte, 3+r.Intn(50))
-		alphabetSize := 1 + r.Intn(len(alphabet))
+	for x := 0; x < 1; x++ {
+		buf := make([]byte, 1000)
+		alphabetSize := 4
 		for i, _ := range buf {
-			buf[i] = alphabet[r.Intn(alphabetSize)]
+			buf[i] = IntToATCG(r.Intn(alphabetSize))
 		}
 		str, unique := string(buf), map[string]bool{}
 		for i, _ := range str {
@@ -303,9 +303,18 @@ func TestInstance_UniqueSubstringsCount_Randomized(t *testing.T) {
 				unique[str[i:j]] = true
 			}
 		}
-		if e, a := len(unique), FromString(str).UniqueSubstringsCount(); e != a {
+		if e, a := len(unique), fromString(t, str).UniqueSubstringsCount(); e != a {
 			t.Errorf("FromString(\"%v\").UniqueSubstringsCount(): \nExpected: %v\n  Actual: %v", str, e, a)
 		}
+	}
+}
+
+func TestSizeOfState(t *testing.T) {
+	if e, a := uintptr(6*4), unsafe.Sizeof(state{}); e != a {
+		t.Errorf("unsafe.Sizeof(state{}): \nExpected: %v\n  Actual: %v", e, a)
+	}
+	if e, a := uintptr(100*6*4), unsafe.Sizeof([100]state{}); e != a {
+		t.Errorf("unsafe.Sizeof([100]state{}): \nExpected: %v\n  Actual: %v", e, a)
 	}
 }
 
@@ -323,4 +332,12 @@ func toJson(t *testing.T, v interface{}) string {
 		t.Errorf("JSON marshalling failure for %#v: \n%v", v, e)
 	}
 	return string(j)
+}
+
+func fromString(t *testing.T, str string) *Instance {
+	sa, err := FromString(str)
+	if err != nil {
+		t.Fatalf("FromString(\"%v\") returned error %v", str, err)
+	}
+	return sa
 }

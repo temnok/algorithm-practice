@@ -1,5 +1,11 @@
 package dna_automaton
 
+import (
+	"fmt"
+	"io"
+	"strings"
+)
+
 const (
 	A = 0
 	T = 1
@@ -18,23 +24,42 @@ type state struct {
 	Next      stateMap
 }
 
-func FromString(str string) *Instance {
-	sa := create()
-	for _, sym := range str {
-		sa.addSymbol(ATCGtoInt(sym))
-	}
-	return sa
+func FromString(str string) (*Instance, error) {
+	return FromReader(strings.NewReader(str))
 }
 
-func ATCGtoInt(c rune) int {
+func FromReader(r io.Reader) (*Instance, error) {
+	sa, buf := create(), make([]byte, 1024)
+	for count := 0; ; {
+		n, e := r.Read(buf)
+		if e == io.EOF {
+			break
+		}
+		if e != nil {
+			return nil, e
+		}
+		for i, b := range buf[:n] {
+			sym := ATCGtoInt(b)
+			if sym < 0 {
+				msg := "FromReader: %v-th symbol with code %v is not one of A, T, C or G"
+				return nil, fmt.Errorf(msg, count+i, sym)
+			}
+			sa.addSymbol(sym)
+		}
+		count += n
+	}
+	return sa, nil
+}
+
+func ATCGtoInt(c byte) int {
 	switch c {
-	case 'A', 'a':
+	case 'A':
 		return 0
-	case 'T', 't':
+	case 'T':
 		return 1
-	case 'C', 'c':
+	case 'C':
 		return 2
-	case 'G', 'g':
+	case 'G':
 		return 3
 	default:
 		return -1
