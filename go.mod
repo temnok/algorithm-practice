@@ -1,3 +1,3 @@
-module github.com/temnok/algorithms
+module github.com/temnok/algorithms/go
 
 go 1.15
