@@ -9,5 +9,5 @@ dependencies {
 }
 
 sourceSets {
-	main.java.srcDirs = test.java.srcDirs = ['java']
+	main.java.srcDirs = test.java.srcDirs = ['src']
 }
