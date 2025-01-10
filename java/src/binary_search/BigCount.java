@@ -8,6 +8,6 @@ public class BigCount {
 
 	// countLong should return number of values in a sorted array
 	public static long bigCount(Array arr, int val) {
-		return 0;
+		throw new UnsupportedOperationException("TODO");
 	}
 }
