@@ -9,17 +9,17 @@ public class RangeTest {
 	@Test
 	public void testRangeInt() {
 		for (var test = 0; test < 1_000; test++) {
-			var tc = TestCase.generate();
+			var td = testData.generate();
 
-			var actual = tc.array.clone();
+			var actual = td.array.clone();
 			Range.rangeInt(actual, 0, actual.length);
 
-			if (!Arrays.equals(tc.expectedArray, actual)) {
+			if (!Arrays.equals(td.expectedArray, actual)) {
 				Assert.fail(
 					String.format("rangeInt(%s):\n  Actual: %s\nExpected: %s",
-						Arrays.toString(tc.array),
+						Arrays.toString(td.array),
 						Arrays.toString(actual),
-						Arrays.toString(tc.expectedArray)
+						Arrays.toString(td.expectedArray)
 					)
 				);
 			}

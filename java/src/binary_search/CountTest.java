@@ -9,15 +9,15 @@ public class CountTest {
 	@Test
 	public void testCount() {
 		for (var test = 0; test < 1_000; test++) {
-			var tc = TestCase.generate();
+			var td = testData.generate();
 
-			var expected = tc.expectedCount;
-			var actual = Count.countInt(tc.array, tc.val);
+			var expected = td.expectedCount;
+			var actual = Count.countInt(td.array, td.val);
 			if (actual != expected) {
 				Assert.fail(
 					String.format("countInt(%s, %s):\n  Actual: %s\nExpected: %s",
-						Arrays.toString(tc.array),
-						tc.val,
+						Arrays.toString(td.array),
+						td.val,
 						actual,
 						expected
 					)

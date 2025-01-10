@@ -9,15 +9,15 @@ public class FirstTest {
 	@Test
 	public void testFirstInt() {
 		for (var test = 0; test < 1_000; test++) {
-			var tc = TestCase.generate();
+			var td = testData.generate();
 
-			var expected = tc.expectedFirst;
-			var actual = First.firstInt(tc.array, tc.val);
+			var expected = td.expectedFirst;
+			var actual = First.firstInt(td.array, td.val);
 			if (actual != expected) {
 				Assert.fail(
 					String.format("firstInt(%s, %s):\n  Actual: %s\nExpected: %s",
-						Arrays.toString(tc.array),
-						tc.val,
+						Arrays.toString(td.array),
+						td.val,
 						actual,
 						expected
 					)
