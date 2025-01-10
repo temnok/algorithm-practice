@@ -1,4 +1,4 @@
-package arrays;
+package old.arrays;
 
 public class Merge {
 	// Merge sorted arr[l..m] and arr[m..r] into arr[l..r]

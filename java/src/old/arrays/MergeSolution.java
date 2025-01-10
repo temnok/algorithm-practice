@@ -1,4 +1,4 @@
-package arrays;
+package old.arrays;
 
 public class MergeSolution {
 	public static void merge(int[] arr, int l, int m, int r) {

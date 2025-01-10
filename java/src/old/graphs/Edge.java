@@ -1,4 +1,4 @@
-package graphs;
+package old.graphs;
 
 class Edge {
 	public final int u, v;

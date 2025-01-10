@@ -1,4 +1,4 @@
-package arrays;
+package old.arrays;
 
 import org.junit.*;
 
