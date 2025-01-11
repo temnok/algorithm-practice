@@ -1,18 +1,23 @@
 package quick_sort;
 
 import org.junit.Assert;
+import org.junit.ClassRule;
 import org.junit.Test;
+import org.junit.rules.Timeout;
 
 import java.util.Arrays;
 
 public class QuickSortTest {
+	@ClassRule
+	public static Timeout classTimeout = Timeout.seconds(2);
+
 	@Test
-	public void testSortInts() {
+	public void testRandomCases() {
 		for (var test = 0; test < 1_000; test++) {
 			var td = quickSortTestData.generate();
 
 			var actual = td.array.clone();
-			QuckSort.sortInts(actual);
+			QuickSort.sortInts(actual);
 
 			if (!Arrays.equals(td.expectedArray, actual)) {
 				Assert.fail(
@@ -24,5 +29,24 @@ public class QuickSortTest {
 				);
 			}
 		}
+	}
+
+	@Test
+	public void testPerformanceForLargeZeroArray() {
+		var arr = new int[100_000_000];
+		QuickSort.sortInts(arr);
+	}
+
+
+	@Test
+	public void testPerformanceForLargeSparceArray() {
+		var arr = new int[100_000_000];
+		for (int i = 0; i < arr.length; i++) {
+			if (i%1000 == 0) {
+				arr[i] = arr.length-i;
+			}
+		}
+
+		QuickSort.sortInts(arr);
 	}
 }
