@@ -3,15 +3,15 @@ package binary_search;
 import java.util.Arrays;
 import java.util.Random;
 
-class testData {
+class binarySearchTestData {
 	private static final Random rand = new Random(0);
 
 	public int[] array;
 	public int val;
 	public int expectedFirst, expectedLast, expectedCount;
 
-	public static testData generate() {
-		var td = new testData();
+	public static binarySearchTestData generate() {
+		var td = new binarySearchTestData();
 
 		int n = rand.nextInt(50), max = rand.nextInt(50);
 		td.array = new int[n];

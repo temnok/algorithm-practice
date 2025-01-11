@@ -1,22 +1,22 @@
-package quick_search;
+package merge_sort;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
 
-public class RangeTest {
+public class MergeSortIntsTest {
 	@Test
-	public void testRangeInt() {
+	public void testRandomCases() {
 		for (var test = 0; test < 1_000; test++) {
-			var td = testData.generate();
+			var td = mergeSortIntTestData.generate();
 
 			var actual = td.array.clone();
-			Range.rangeInt(actual, 0, actual.length);
+			MergeSortInts.sortInts(actual);
 
 			if (!Arrays.equals(td.expectedArray, actual)) {
 				Assert.fail(
-					String.format("rangeInt(%s):\n  Actual: %s\nExpected: %s",
+					String.format("sortInts(%s):\n  Actual: %s\nExpected: %s",
 						Arrays.toString(td.array),
 						Arrays.toString(actual),
 						Arrays.toString(td.expectedArray)

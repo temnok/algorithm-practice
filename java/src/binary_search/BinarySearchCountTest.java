@@ -5,17 +5,17 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-public class FirstTest {
+public class BinarySearchCountTest {
 	@Test
-	public void testFirstInt() {
+	public void testRandomCases() {
 		for (var test = 0; test < 1_000; test++) {
-			var td = testData.generate();
+			var td = binarySearchTestData.generate();
 
-			var expected = td.expectedFirst;
-			var actual = First.firstInt(td.array, td.val);
+			var expected = td.expectedCount;
+			var actual = BinarySearchCount.countInt(td.array, td.val);
 			if (actual != expected) {
 				Assert.fail(
-					String.format("firstInt(%s, %s):\n  Actual: %s\nExpected: %s",
+					String.format("countInt(%s, %s):\n  Actual: %s\nExpected: %s",
 						Arrays.toString(td.array),
 						td.val,
 						actual,

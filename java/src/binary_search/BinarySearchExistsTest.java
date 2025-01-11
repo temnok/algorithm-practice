@@ -5,17 +5,17 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-public class LastTest {
+public class BinarySearchExistsTest {
 	@Test
-	public void testLastInt() {
+	public void testRandomCases() {
 		for (var test = 0; test < 1_000; test++) {
-			var td = testData.generate();
+			var td = binarySearchTestData.generate();
 
-			var expected = td.expectedLast;
-			var actual = Last.lastInt(td.array, td.val);
+			var expected = td.expectedFirst >= 0;
+			var actual = BinarySearchExists.existsInt(td.array, td.val);
 			if (actual != expected) {
 				Assert.fail(
-					String.format("lastInt(%s, %s):\n  Actual: %s\nExpected: %s",
+					String.format("existsInt(%s, %s):\n  Actual: %s\nExpected: %s",
 						Arrays.toString(td.array),
 						td.val,
 						actual,

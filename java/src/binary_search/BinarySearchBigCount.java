@@ -1,6 +1,6 @@
 package binary_search;
 
-public class BigCount {
+public class BinarySearchBigCount {
 	public interface Array {
 		long length();
 		int get(long index);
