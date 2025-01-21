@@ -9,7 +9,7 @@ public class MergeSortIntsTest {
 	@Test
 	public void testRandomCases() {
 		for (var test = 0; test < 1_000; test++) {
-			var td = mergeSortIntTestData.generate();
+			var td = new randomIntTestData();
 
 			var actual = td.array.clone();
 			MergeSortInts.sortInts(actual);

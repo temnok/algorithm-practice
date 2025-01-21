@@ -7,7 +7,7 @@ public class MinDistTest {
 	@Test
 	public void testRandomCases() {
 		for (int i = 0; i < 10_000; i++) {
-			var td = new graphTestData();
+			var td = new randomTestData();
 
 			var expected = td.minDist;
 			var actual = MinDist.minDist(td.graph, td.start, td.end);

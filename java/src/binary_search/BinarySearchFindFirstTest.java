@@ -9,7 +9,7 @@ public class BinarySearchFindFirstTest {
 	@Test
 	public void testRandomCases() {
 		for (var test = 0; test < 1_000; test++) {
-			var td = binarySearchTestData.generate();
+			var td = new randomTestData();
 
 			var expected = td.expectedFirst;
 			var actual = BinarySearchFindFirst.findFirstInt(td.array, td.val);

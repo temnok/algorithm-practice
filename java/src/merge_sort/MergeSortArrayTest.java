@@ -10,7 +10,7 @@ public class MergeSortArrayTest {
 	@Test
 	public void testRandomCases() {
 		for (var test = 0; test < 1_000; test++) {
-			var td = mergeSortStringTestData.generate();
+			var td = new randomStringTestData();
 
 			var actual = td.array.clone();
 			MergeSortArray.sortArray(actual, Comparator.comparingInt(String::length));

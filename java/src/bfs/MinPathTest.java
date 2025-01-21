@@ -7,7 +7,7 @@ public class MinPathTest {
 	@Test
 	public void testRandomCases() {
 		for (int i = 0; i < 10_000; i++) {
-			var td = new graphTestData();
+			var td = new randomTestData();
 
 			var expected = td.minPath;
 			var actual = MinPath.minPath(td.graph, td.start, td.end);

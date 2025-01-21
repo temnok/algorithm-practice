@@ -14,7 +14,7 @@ public class QuickSortTest {
 	@Test
 	public void testRandomCases() {
 		for (var test = 0; test < 1_000; test++) {
-			var td = quickSortTestData.generate();
+			var td = new randomTestData();
 
 			var actual = td.array.clone();
 			QuickSort.sortInts(actual);

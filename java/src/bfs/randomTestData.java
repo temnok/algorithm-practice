@@ -2,7 +2,7 @@ package bfs;
 
 import java.util.*;
 
-class graphTestData {
+class randomTestData {
 	private static final Random rand = new Random(0);
 
 	List<List<Integer>> graph;
@@ -11,7 +11,7 @@ class graphTestData {
 	List<Integer> minPath = new LinkedList<>();
 	List<Integer> order = new ArrayList<>();
 
-	graphTestData() {
+	randomTestData() {
 		int n = 1 + rand.nextInt(50), maxAdj = rand.nextInt(50);
 		graph = new ArrayList<>();
 		for (int u = 0; u < n; u++) {

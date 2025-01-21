@@ -5,14 +5,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-class graphTestData {
+class randomTestData {
 	private static final Random rand = new Random(0);
 
 	List<List<Integer>> graph;
 	int start;
 	List<Integer> order1 = new ArrayList<>(), order2 = new ArrayList<>();
 
-	graphTestData() {
+	randomTestData() {
 		int n = 1 + rand.nextInt(50), maxAdj = rand.nextInt(50);
 		graph = new ArrayList<>();
 		for (int u = 0; u < n; u++) {

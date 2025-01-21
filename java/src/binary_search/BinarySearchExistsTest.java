@@ -9,7 +9,7 @@ public class BinarySearchExistsTest {
 	@Test
 	public void testRandomCases() {
 		for (var test = 0; test < 1_000; test++) {
-			var td = binarySearchTestData.generate();
+			var td = new randomTestData();
 
 			var expected = td.expectedFirst >= 0;
 			var actual = BinarySearchExists.existsInt(td.array, td.val);

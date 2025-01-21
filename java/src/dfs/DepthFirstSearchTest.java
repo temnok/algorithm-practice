@@ -31,7 +31,7 @@ public class DepthFirstSearchTest {
 	@Test
 	public void testRandomCases() {
 		for (int i = 0; i < 10_000; i++) {
-			var td = new graphTestData();
+			var td = new randomTestData();
 
 			var expected1 = td.order1;
 			var expected2 = td.order2;
