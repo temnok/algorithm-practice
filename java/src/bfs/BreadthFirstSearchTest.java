@@ -3,7 +3,6 @@ package bfs;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BreadthFirstSearchTest {
@@ -22,10 +21,26 @@ public class BreadthFirstSearchTest {
 		);
 		var expected = List.of(0, 1, 3, 2, 4, 6, 5, 7, 8);
 
-		var actual = new ArrayList<Integer>();
-		BreadthFirstSearch.bfs(graph, actual);
+		var actual = BreadthFirstSearch.bfs(graph, 0);
 		if (!actual.equals(expected)) {
-			Assert.fail(String.format("dfs(%s):\n got %s\nwant %s", graph, actual, expected));
+			Assert.fail(String.format("dfs(%s, 0):\nwant %s\n got %s", graph, expected, actual));
+		}
+	}
+
+	@Test
+	public void testRandomCases() {
+		for (int i = 0; i < 10_000; i++) {
+			var td = new graphTestData();
+
+			var expected = td.order;
+			var actual = BreadthFirstSearch.bfs(td.graph, td.start);
+
+			if (!expected.equals(actual)) {
+				Assert.fail(String.format(
+					"bfs(%s, %s):\nwant %s\n got %s",
+					td.graph, td.start, expected, actual
+				));
+			}
 		}
 	}
 }
