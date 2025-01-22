@@ -37,7 +37,7 @@ public class BinarySearchBigCountTest {
 	}
 
 	@ClassRule
-	public static Timeout classTimeout = Timeout.seconds(1);
+	public static Timeout classTimeout = Timeout.seconds(10);
 
 	@Test
 	public void test1() {

@@ -6,7 +6,7 @@ public class BinarySearchBigCount {
 		int get(long index);
 	}
 
-	// countLong should return number of values in a sorted array
+	// bigCount should return number of value occurences in a sorted array
 	public static long bigCount(Array arr, int val) {
 		throw new UnsupportedOperationException("TODO");
 	}

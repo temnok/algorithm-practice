@@ -14,11 +14,11 @@ class randomTestData {
 	randomTestData() {
 		int n = 1 + rand.nextInt(50), maxAdj = rand.nextInt(50);
 		graph = new ArrayList<>();
-		for (int u = 0; u < n; u++) {
+		for (var u = 0; u < n; u++) {
 			var adj = new ArrayList<Integer>();
 
 			var m = rand.nextInt(1 + maxAdj);
-			for (int i = 0; i < m; i++) {
+			for (var i = 0; i < m; i++) {
 				int v = rand.nextInt(n);
 				adj.add(v);
 			}
