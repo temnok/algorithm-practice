@@ -6,15 +6,22 @@ import java.util.Random;
 class randomTestData {
 	private static final Random rand = new Random(0);
 
-	public int[] array, expectedArray;
+	int[] array, expectedArray;
+	int randomIndex;
 
 	randomTestData() {
-		int n = rand.nextInt(50), max = rand.nextInt(50);
+		this(50);
+	}
+
+	randomTestData(int maxN) {
+		int n = rand.nextInt(maxN+1), max = rand.nextInt(maxN+1);
 		array = new int[n];
 		for (int i = 0; i < n; i++) {
 			array[i] = rand.nextInt(1 + max);
 		}
 		expectedArray = array.clone();
 		Arrays.sort(expectedArray);
+
+		randomIndex = rand.nextInt(n);
 	}
 }
