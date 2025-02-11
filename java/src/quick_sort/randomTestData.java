@@ -14,7 +14,7 @@ class randomTestData {
 	}
 
 	randomTestData(int maxN) {
-		int n = rand.nextInt(maxN+1), max = rand.nextInt(maxN+1);
+		int n = 1+rand.nextInt(maxN), max = rand.nextInt(maxN+1);
 		array = new int[n];
 		for (int i = 0; i < n; i++) {
 			array[i] = rand.nextInt(1 + max);
