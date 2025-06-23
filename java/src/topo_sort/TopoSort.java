@@ -22,4 +22,8 @@ public class TopoSort {
 	public static int[] topoSort(int[][] adjacentyList) {
 		throw new UnsupportedOperationException("TODO");
 	}
+
+	public static int[] topoSortKahn(int[][] adjacentyList) {
+		throw new UnsupportedOperationException("TODO");
+	}
 }
