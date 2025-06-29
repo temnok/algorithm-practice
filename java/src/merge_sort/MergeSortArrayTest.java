@@ -13,7 +13,7 @@ public class MergeSortArrayTest {
 			var td = new randomStringTestData();
 
 			var actual = td.array.clone();
-			MergeSortArray.sortArray(actual, Comparator.comparingInt(String::length));
+			MergeSortArray.mergeSortArray(actual, Comparator.comparingInt(String::length));
 
 			if (!Arrays.equals(td.expectedArray, actual)) {
 				Assert.fail(

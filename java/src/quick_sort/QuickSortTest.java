@@ -17,7 +17,7 @@ public class QuickSortTest {
 			var td = new randomTestData();
 
 			var actual = td.array.clone();
-			QuickSort.sortInts(actual);
+			QuickSort.quickSortInts(actual);
 
 			if (!Arrays.equals(td.expectedArray, actual)) {
 				Assert.fail(
@@ -34,7 +34,7 @@ public class QuickSortTest {
 	@Test
 	public void testPerformanceForLargeZeroArray() {
 		var arr = new int[100_000_000];
-		QuickSort.sortInts(arr);
+		QuickSort.quickSortInts(arr);
 	}
 
 
@@ -47,6 +47,6 @@ public class QuickSortTest {
 			}
 		}
 
-		QuickSort.sortInts(arr);
+		QuickSort.quickSortInts(arr);
 	}
 }

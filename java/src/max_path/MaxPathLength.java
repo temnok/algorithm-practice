@@ -17,7 +17,6 @@ public class MaxPathLength {
  	//  *<-----*<-----*<-----*------>*
 	//  0      1      2      3       4
 	//
-
 	public static int maxPathLength(int n, int[][] edges) {
 		throw new UnsupportedOperationException("TODO");
 	}

@@ -23,7 +23,6 @@ public class MinTaskTime {
  	//  *<-----*<-----*----->*------>*
 	//  0      1      2      3       4
 	// t=20   t=10   t=30   t=50   t=40
-
 	public static int minTaskTime(int n, int[] time, int[][] before) {
 		throw new UnsupportedOperationException("TODO");
 	}

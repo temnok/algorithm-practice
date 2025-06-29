@@ -1,8 +1,6 @@
 package distjoint_set;
 
 public class DisjointSet {
-	int[] par, size;
-
 	// DisjointSet constructor should initialize a disjoint set
 	public DisjointSet(int n) {
 		throw new UnsupportedOperationException("TODO");

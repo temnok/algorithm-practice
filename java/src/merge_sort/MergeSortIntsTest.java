@@ -12,7 +12,7 @@ public class MergeSortIntsTest {
 			var td = new randomIntTestData();
 
 			var actual = td.array.clone();
-			MergeSortInts.sortInts(actual);
+			MergeSortInts.mergeSortInts(actual);
 
 			if (!Arrays.equals(td.expectedArray, actual)) {
 				Assert.fail(
