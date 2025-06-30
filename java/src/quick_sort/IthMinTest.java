@@ -22,8 +22,8 @@ public class IthMinTest {
 	}
 
 	private void testRandomCases(int testCount, int maxN) {
-		for (var test = 0; test < 100; test++) {
-			var td = new randomTestData(100_000);
+		for (var test = 0; test < testCount; test++) {
+			var td = new randomTestData(maxN);
 
 			var expected = td.expectedArray[td.randomIndex];
 			var actual = IthMin.ithMin(td.array, td.randomIndex);

@@ -21,7 +21,7 @@ public class QuickSortTest {
 
 			if (!Arrays.equals(td.expectedArray, actual)) {
 				Assert.fail(
-					String.format("sortInts(%s):\n  Actual: %s\nExpected: %s",
+					String.format("quickSortInts(%s):\n  Actual: %s\nExpected: %s",
 						Arrays.toString(td.array),
 						Arrays.toString(actual),
 						Arrays.toString(td.expectedArray)
@@ -39,7 +39,7 @@ public class QuickSortTest {
 
 
 	@Test
-	public void testPerformanceForLargeSparceArray() {
+	public void testPerformanceForLargeSparseArray() {
 		var arr = new int[100_000_000];
 		for (int i = 0; i < arr.length; i++) {
 			if (i%1000 == 0) {
