@@ -5,13 +5,13 @@ type DisjointSet struct {
 }
 
 // DisjointSet constructor should initialize a disjoint set
-func (*DisjointSet) init(n int) {
-	// TODO
+func newDisjointSet(n int) *DisjointSet {
+	return nil // TODO
 }
 
 // union should return false if elements i and j are already in the same set
 // or perform union operation on their sets and return true
-func (*DisjointSet) union(i, j bool) bool {
+func (*DisjointSet) union(i, j int) bool {
 	return false // TODO
 }
 
