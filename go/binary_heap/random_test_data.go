@@ -14,12 +14,12 @@ type randomTestData struct {
 var random = rand.New(rand.NewPCG(0, 0))
 
 func newRandomTestData() *randomTestData {
-	n, maxVal := 1+rand.IntN(50), rand.IntN(50)
+	n, maxVal := 1+random.IntN(50), random.IntN(50)
 	td := &randomTestData{
 		array: make([]int, n),
 	}
 	for i := range n {
-		td.array[i] = rand.IntN(1 + maxVal)
+		td.array[i] = random.IntN(1 + maxVal)
 	}
 	td.heap = append([]int{}, td.array...)
 	for i0 := len(td.heap) / 2; i0 >= 0; i0-- {
