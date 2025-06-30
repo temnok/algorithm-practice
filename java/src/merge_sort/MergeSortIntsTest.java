@@ -16,7 +16,7 @@ public class MergeSortIntsTest {
 
 			if (!Arrays.equals(td.expectedArray, actual)) {
 				Assert.fail(
-					String.format("sortInts(%s):\n  Actual: %s\nExpected: %s",
+					String.format("mergeSortInts(%s):\n  Actual: %s\nExpected: %s",
 						Arrays.toString(td.array),
 						Arrays.toString(actual),
 						Arrays.toString(td.expectedArray)
