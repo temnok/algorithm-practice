@@ -8,25 +8,26 @@ type randomTestData struct {
 	minPath, order      []int
 }
 
+var random = rand.New(rand.NewPCG(0, 0))
+
 func newRandomTestData() *randomTestData {
-	rand := rand.New(rand.NewPCG(0, 0))
-	n := 1 + rand.IntN(50)
-	maxAdj := rand.IntN(50)
+	n := 1 + random.IntN(50)
+	maxAdj := random.IntN(50)
 
 	td := &randomTestData{}
 	for range n {
 		var adj []int
-		m := rand.IntN(1 + maxAdj)
+		m := random.IntN(1 + maxAdj)
 		for range m {
-			v := rand.IntN(n)
+			v := random.IntN(n)
 			adj = append(adj, v)
 		}
 
 		td.graph = append(td.graph, adj)
 	}
 
-	td.start = rand.IntN(n)
-	td.end = rand.IntN(n)
+	td.start = random.IntN(n)
+	td.end = random.IntN(n)
 	td.walk()
 	td.minDist = len(td.minPath) - 1
 

@@ -7,10 +7,10 @@ type randomLabyrinthTestData struct {
 	minDist   int
 }
 
-func newRandomLabyrinthTestData() *randomLabyrinthTestData {
-	rand := rand.New(rand.NewPCG(0, 0))
+var labyrinthRandom = rand.New(rand.NewPCG(0, 0))
 
-	m, n := 1+rand.IntN(50), 1+rand.IntN(50)
+func newRandomLabyrinthTestData() *randomLabyrinthTestData {
+	m, n := 1+labyrinthRandom.IntN(50), 1+labyrinthRandom.IntN(50)
 
 	td := &randomLabyrinthTestData{
 		labyrinth: make([][]bool, m),
@@ -19,7 +19,7 @@ func newRandomLabyrinthTestData() *randomLabyrinthTestData {
 	for i := range m {
 		td.labyrinth[i] = make([]bool, n)
 		for j := range n {
-			td.labyrinth[i][j] = rand.IntN(2) == 1
+			td.labyrinth[i][j] = labyrinthRandom.IntN(2) == 1
 		}
 	}
 	td.labyrinth[0][0] = false
