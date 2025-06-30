@@ -24,5 +24,55 @@ package min_task_time
 // t=20   t=10   t=30   t=50   t=40
 
 func minTaskTime(n int, time []int, before [][]int) int {
-	return 0 // TODO
+	graph := make([][]int, n)
+	for _, e := range before {
+		u, v := e[0], e[1]
+		graph[u] = append(graph[u], v)
+	}
+
+	order := topoSort(graph)
+	dist := append([]int{}, time...)
+	ans := 0
+
+	for _, u := range order {
+		ans = max(ans, dist[u])
+
+		for _, v := range graph[u] {
+			if d := dist[u] + time[v]; d > dist[v] {
+				dist[v] = d
+				ans = max(ans, d)
+			}
+		}
+	}
+
+	return ans
+}
+
+func topoSort(graph [][]int) []int {
+	n := len(graph)
+	inCounts := make([]int, n)
+
+	for _, vs := range graph {
+		for _, v := range vs {
+			inCounts[v]++
+		}
+	}
+
+	var order []int
+	for v, inCount := range inCounts {
+		if inCount == 0 {
+			order = append(order, v)
+		}
+	}
+
+	for i := 0; i < len(order); i++ {
+		u := order[i]
+		for _, v := range graph[u] {
+			if inCounts[v]--; inCounts[v] == 0 {
+				order = append(order, v)
+			}
+		}
+	}
+
+	return order
 }

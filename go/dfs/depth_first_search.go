@@ -14,5 +14,26 @@ package dfs
 //
 // and start node 0, the result should be either { 0, 1, 2, 5, 8, 4, 7, 3, 6 } or { 0, 3, 6, 7, 8, 2, 5, 4, 1 }
 func dfs(graph [][]int, start int) []int {
-	return nil // TODO
+	n := len(graph)
+	visited := make([]bool, n)
+	visited[start] = true
+
+	var ans []int
+
+	for stack := []int{start}; len(stack) > 0; {
+		sp := len(stack) - 1
+		p := stack[sp]
+		stack = stack[:sp]
+
+		ans = append(ans, p)
+
+		for _, c := range graph[p] {
+			if !visited[c] {
+				stack = append(stack, c)
+				visited[c] = true
+			}
+		}
+	}
+
+	return ans
 }

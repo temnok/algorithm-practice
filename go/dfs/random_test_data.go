@@ -66,7 +66,7 @@ func (td *randomTestData) walk2() {
 	for len(stack) > 0 {
 		u := stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
-		td.order1 = append(td.order1, u)
+		td.order2 = append(td.order2, u)
 
 		row := td.graph[u]
 		for i := len(row) - 1; i >= 0; i-- {

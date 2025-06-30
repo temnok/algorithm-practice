@@ -18,7 +18,7 @@ func newRandomStringTestData() *randomStringTestData {
 		td.array[i] = fmt.Sprint(random.IntN(1 + maxVal))
 	}
 	td.expectedArray = append([]string{}, td.array...)
-	sort.Slice(td.expectedArray, func(i, j int) bool {
+	sort.SliceStable(td.expectedArray, func(i, j int) bool {
 		return len(td.expectedArray[i]) < len(td.expectedArray[j])
 	})
 

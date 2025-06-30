@@ -30,7 +30,7 @@ func (td *randomTestData) randomTestDataSuccess() bool {
 
 	var edges [][]int
 	mat := make([][]int, td.n+1)
-	for i := range td.n {
+	for i := range mat {
 		mat[i] = make([]int, td.n+1)
 	}
 

@@ -14,5 +14,25 @@ package bfs
 //
 // and start node 0, the result should be { 0, 1, 3, 2, 4, 6, 5, 7, 8 }
 func bfs(graph [][]int, start int) []int {
-	return nil // TODO
+	n := len(graph)
+	visited := make([]bool, n)
+	visited[start] = true
+
+	var ans []int
+
+	for q := []int{start}; len(q) > 0; {
+		p := q[0]
+		q = q[1:]
+
+		ans = append(ans, p)
+
+		for _, c := range graph[p] {
+			if !visited[c] {
+				q = append(q, c)
+				visited[c] = true
+			}
+		}
+	}
+
+	return ans
 }

@@ -11,8 +11,8 @@ func TestStringRandomCases(t *testing.T) {
 		td := newRandomStringTestData()
 
 		actual := append([]string{}, td.array...)
-		mergeSortArray(actual, func(i, j int) int {
-			return len(actual[i]) - len(actual[j])
+		mergeSortArray(actual, func(a, b string) int {
+			return len(a) - len(b)
 		})
 
 		if !reflect.DeepEqual(td.expectedArray, actual) {
@@ -22,5 +22,4 @@ func TestStringRandomCases(t *testing.T) {
 			)
 		}
 	}
-
 }

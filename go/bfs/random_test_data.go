@@ -64,7 +64,7 @@ func (td *randomTestData) walk() {
 		}
 	}
 
-	for l, r := 0, len(td.minPath); l < r; l, r = l+1, r-1 {
+	for l, r := 0, len(td.minPath)-1; l < r; l, r = l+1, r-1 {
 		td.minPath[l], td.minPath[r] = td.minPath[r], td.minPath[l]
 	}
 }

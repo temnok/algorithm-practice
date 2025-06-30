@@ -22,6 +22,7 @@ func newRandomLabyrinthTestData() *randomLabyrinthTestData {
 			td.labyrinth[i][j] = labyrinthRandom.IntN(2) == 1
 		}
 	}
+
 	td.labyrinth[0][0] = false
 	td.labyrinth[m-1][n-1] = false
 
@@ -55,7 +56,7 @@ func (td *randomLabyrinthTestData) findMinDist() {
 		for _, d := range ds {
 			i, j := i0+d[0], j0+d[1]
 
-			if i >= 0 && i < m && j >= 0 && j < n && td.labyrinth[i][j] {
+			if i >= 0 && i < m && j >= 0 && j < n && !td.labyrinth[i][j] {
 				v := i*n + j
 				if dist[v] < 0 {
 					queue = append(queue, v)

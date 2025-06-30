@@ -11,7 +11,7 @@ func TestHeapSet_RandomCases(t *testing.T) {
 
 		assert.True(t, minHeapIsOK(td.heap))
 
-		actual := append([]int{}, td.array...)
+		actual := append([]int{}, td.heap...)
 		heapSet(actual, td.randomIndex, td.randomValue)
 
 		td.heap[td.randomIndex] = td.randomValue

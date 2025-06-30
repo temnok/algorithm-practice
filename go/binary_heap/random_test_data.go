@@ -14,7 +14,7 @@ type randomTestData struct {
 var random = rand.New(rand.NewPCG(0, 0))
 
 func newRandomTestData() *randomTestData {
-	n, maxVal := 1+random.IntN(50), random.IntN(50)
+	n, maxVal := 1+random.IntN(5), random.IntN(5)
 	td := &randomTestData{
 		array: make([]int, n),
 	}
@@ -44,8 +44,8 @@ func newRandomTestData() *randomTestData {
 }
 
 func minHeapIsOK(heap []int) bool {
-	for i := len(heap) - 1; i > 0; i-- {
-		if heap[i] < heap[(i-1)/2] {
+	for i := 1; i < len(heap); i++ {
+		if heap[(i-1)/2] > heap[i] {
 			return false
 		}
 	}

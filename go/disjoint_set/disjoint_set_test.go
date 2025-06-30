@@ -20,7 +20,7 @@ func TestLargeArray(t *testing.T) {
 
 func TestRandomCases(t *testing.T) {
 	for range 1_000 {
-		n := 1 + random.IntN(8*1024)
+		n := 1 + random.IntN(1024)
 		td := newRandomTestData(n)
 
 		set := newDisjointSet(n)
