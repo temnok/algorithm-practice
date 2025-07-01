@@ -8,21 +8,6 @@ public class SmallerNumbers {
 	number. For given example result is [4,0,1,1,3]
 	 */
 	public static int[] getSmallerNumbers(int [] num, int max) {
-		int count[] = new int[max];
-		int result[] = new int[num.length];
-
-		for (int n : num) {
-			count[n]++;
-		}
-
-		for (int i = 1; i < count.length; i++) {
-			count[i] += count[i - 1];
-		}
-
-		for (int i = 0; i < num.length; i++) {
-			result[i] = num[i] == 0 ? 0 : count[num[i] - 1];
-		}
-
-		return result;
+		throw new UnsupportedOperationException();
 	}
 }
