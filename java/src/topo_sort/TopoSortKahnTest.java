@@ -5,14 +5,14 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-public class TopoSortTest {
+public class TopoSortKahnTest {
 	@Test
 	public void testExample() {
-		Assert.assertArrayEquals(new int[] {3, 0, 2, 1}, TopoSort.topoSort(new int[][]{{2, 1}, {}, {1}, {0, 2}}));
+		Assert.assertArrayEquals(new int[] {3, 0, 2, 1}, TopoSortKahn.topoSort(new int[][]{{2, 1}, {}, {1}, {0, 2}}));
 
-		Assert.assertArrayEquals(new int[] {}, TopoSort.topoSort(new int[][]{{2, 1}, {3}, {1}, {0, 2}}));
-		Assert.assertArrayEquals(new int[] {}, TopoSort.topoSort(new int[][]{{0}}));
-		Assert.assertArrayEquals(new int[] {}, TopoSort.topoSort(new int[][]{{1}, {0}}));
+		Assert.assertArrayEquals(new int[] {}, TopoSortKahn.topoSort(new int[][]{{2, 1}, {3}, {1}, {0, 2}}));
+		Assert.assertArrayEquals(new int[] {}, TopoSortKahn.topoSort(new int[][]{{0}}));
+		Assert.assertArrayEquals(new int[] {}, TopoSortKahn.topoSort(new int[][]{{1}, {0}}));
 	}
 
 	@Test
