@@ -8,7 +8,6 @@ public class HashingTest {
 	public void getHashesTest() {
 		String s = "dasfasf;jadfja;dfjasdfj";
 		int size = 5;
-		int p = 31;
 		long[] hashes = Hashing.getHashes(s, size);
 		Assert.assertEquals(s.length() - size + 1, hashes.length);
 
@@ -16,7 +15,7 @@ public class HashingTest {
 			String str = s.substring(i, i + size);
 			long h = 0;
 			for (int j = 0; j < str.length(); j++) {
-				h = h*p + str.toCharArray()[j];
+				h = h*Hashing.BASE + Hashing.toInt(str.toCharArray()[j]);
 			}
 
 			Assert.assertEquals(h, hashes[i]);
@@ -27,13 +26,12 @@ public class HashingTest {
 	@Test
 	public void getHashTest() {
 		String s = "iwcwiuig";
-		int p = 31;
 
 		long[] hashes = Hashing.getHashes(s, s.length());
 
 		long h = 0;
 		for (int j = 0; j < s.length(); j++) {
-			h = h*p + s.toCharArray()[j];
+			h = h*Hashing.BASE + Hashing.toInt(s.toCharArray()[j]);
 		}
 
 		Assert.assertEquals(h, hashes[0]);
@@ -53,5 +51,4 @@ public class HashingTest {
 				source, substring, expected, actual), expected, actual);
 		}
 	}
-
 }
