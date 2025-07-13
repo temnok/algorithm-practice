@@ -1,7 +1,5 @@
 package bfs;
 
-import second.bfs.BreadthFirstSearch1;
-
 import java.util.*;
 
 public class MaxIsland {
