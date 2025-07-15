@@ -20,7 +20,7 @@ public class TopoSortKahnTest {
 		for (int test = 0; test < 10_000; test++) {
 			var td = new randomTestData();
 
-			var actual = TopoSort.topoSort(td.adj);
+			var actual = TopoSortKahn.topoSort(td.adj);
 
 			if (td.hasCycle) {
 				Assert.assertEquals(0, actual.length);
