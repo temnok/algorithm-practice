@@ -2,7 +2,6 @@ package dijkstra;
 
 import org.junit.Assert;
 import org.junit.Test;
-import original.dijkstra.BellmanFord;
 
 import java.util.Arrays;
 
@@ -12,7 +11,7 @@ public class BellmanFordMinPathTest {
 		for (int i = 0; i < 10_000; i++) {
 			var td = new randomTestData();
 
-			var actual = BellmanFord.bellmanFordMinPath(td.n, td.edges, td.start);
+			var actual = BellmanFordMinPath.bellmanFordPath(td.n, td.edges, td.start);
 			if (!Arrays.equals(actual, td.expected)) {
 				Assert.fail(String.format(
 					"dijkstraMinPath(%s, %s, %s):\nwant %s\n got %s",
