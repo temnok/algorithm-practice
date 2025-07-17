@@ -1,11 +1,13 @@
 package skiplist
 
+import "github.com/temnok/algorithms-practice/go/set"
+
 type SkipList struct {
 	// TODO
 }
 
 // NewSkipList should return initialized skip list instance
-func NewSkipList() *SkipList {
+func NewSkipList() set.Set {
 	return nil // TODO
 }
 

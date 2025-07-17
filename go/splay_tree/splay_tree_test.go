@@ -1,4 +1,4 @@
-package skiplist
+package splay_tree
 
 import (
 	"github.com/temnok/algorithms-practice/go/set"
@@ -6,5 +6,5 @@ import (
 )
 
 func TestRandomCases(t *testing.T) {
-	set.GenericRandomCases(t, "SkipList", NewSkipList)
+	set.GenericRandomCases(t, "SplayTree", NewSplayTree)
 }

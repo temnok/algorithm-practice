@@ -1,4 +1,4 @@
-module github.com/temnok/algorithms/go
+module github.com/temnok/algorithms-practice/go
 
 go 1.23
 

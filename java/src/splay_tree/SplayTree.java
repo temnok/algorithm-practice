@@ -1,8 +1,8 @@
-package skiplist;
+package splay_tree;
 
 import set.Set;
 
-public class SkipList implements Set {
+public class SplayTree implements Set {
 	// add should insert given val into this skip list
 	// and return true if list did not contain val previously,
 	// or do nothing and return false if val is already present
