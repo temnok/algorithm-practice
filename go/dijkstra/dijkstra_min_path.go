@@ -7,5 +7,5 @@ package dijkstra
 // For example, if n = 4, edges = [[0, 2, 10], [0, 1, 100], [2, 1, 20]] and start = 0 then
 // result should be [0, 30, 10, -1]
 func dijkstraMinPath(n int, edges [][]int, start int) []int {
-	return nil // TODO
+	panic("TODO")
 }

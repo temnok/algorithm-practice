@@ -5,5 +5,5 @@ func bigCount(arr interface {
 	len() int
 	get(int) int
 }, val int) int {
-	return 0 // TODO
+	panic("TODO")
 }

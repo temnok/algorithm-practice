@@ -5,5 +5,5 @@ package expr
 // binary operators '+', '-', '*', '/'. Multiply and division have higher priority than add/sub.
 // Division by zero produces zero result. For example, expression '1+2*(3/0-4)' evaluates to -7.
 func evaluateExpr(expr string) int {
-	return 0 // TODO
+	panic("TODO")
 }
