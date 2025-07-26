@@ -10,11 +10,11 @@ func TestMinDist_RandomCases(t *testing.T) {
 		td := newRandomTestData()
 
 		expected := td.minDist
-		actual := minDist(td.graph, td.start, td.end)
+		actual := MinDist(td.graph, td.start, td.end)
 
 		if expected != actual {
 			assert.FailNowf(t, "",
-				"minDist(%v, %v, %v):\nwant %v\n got %v",
+				"MinDist(%v, %v, %v):\nwant %v\n got %v",
 				td.graph, td.start, td.end, expected, actual,
 			)
 		}

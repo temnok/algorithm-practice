@@ -1,6 +1,6 @@
 package dfs
 
-// dfs should visit graph nodes starting from node start
+// Dfs should visit graph nodes starting from node start
 // using provided adjacency list and add the nodes in Depth-First order to output list.
 // For example, for the given adjacency list
 //
@@ -13,6 +13,6 @@ package dfs
 // 6->7->8-
 //
 // and start node 0, the result should be either { 0, 1, 2, 5, 8, 4, 7, 3, 6 } or { 0, 3, 6, 7, 8, 2, 5, 4, 1 }
-func dfs(graph [][]int, start int) []int {
+func Dfs(graph [][]int, start int) []int {
 	panic("TODO")
 }

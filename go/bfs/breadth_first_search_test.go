@@ -21,7 +21,7 @@ func TestBfs(t *testing.T) {
 
 	expected := []int{0, 1, 3, 2, 4, 6, 5, 7, 8}
 
-	var actual = bfs(graph, 0)
+	var actual = Bfs(graph, 0)
 	if !reflect.DeepEqual(actual, expected) {
 		assert.FailNowf(t, "", "dfs(%v, 0):\nwant %v\n got %v", graph, expected, actual)
 	}
@@ -32,11 +32,11 @@ func TestBfsRandomCases(t *testing.T) {
 		td := newRandomTestData()
 
 		expected := td.order
-		actual := bfs(td.graph, td.start)
+		actual := Bfs(td.graph, td.start)
 
 		if !reflect.DeepEqual(actual, expected) {
 			assert.FailNowf(t, "",
-				"bfs(%s, %s):\nwant %s\n got %s",
+				"Bfs(%s, %s):\nwant %s\n got %s",
 				td.graph, td.start, expected, actual,
 			)
 		}
