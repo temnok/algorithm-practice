@@ -17,5 +17,5 @@ package max_path
 //  0      1      2      3       4
 
 func maxPathLength(n int, edges [][]int) int {
-	return 0 // TODO
+	panic("TODO")
 }

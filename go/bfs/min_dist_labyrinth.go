@@ -6,5 +6,5 @@ package bfs
 // Both start and end cells will be empty. Only horizontal and vertical moves are allowed.
 // Diagonal moves are NOT allowed.
 func minDistLabyrinth(labyrinth [][]bool) int {
-	return 0 // TODO
+	panic("TODO")
 }

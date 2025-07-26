@@ -14,5 +14,5 @@ package bfs
 //
 // and start node 0, the result should be { 0, 1, 3, 2, 4, 6, 5, 7, 8 }
 func bfs(graph [][]int, start int) []int {
-	return nil // TODO
+	panic("TODO")
 }

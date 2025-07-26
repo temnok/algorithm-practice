@@ -14,5 +14,5 @@ package dfs
 //
 // and start node 0, the result should be either { 0, 1, 2, 5, 8, 4, 7, 3, 6 } or { 0, 3, 6, 7, 8, 2, 5, 4, 1 }
 func dfs(graph [][]int, start int) []int {
-	return nil // TODO
+	panic("TODO")
 }

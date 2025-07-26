@@ -4,5 +4,5 @@ package merge_sort
 // comparator function should return negative value if arr[i]<arr[j], zero if arr[i]==arr[j]
 // and positive value if arr[i]>arr[j]
 func mergeSortArray[T any](arr []T, cmp func(T, T) int) {
-	// TODO
+	panic("TODO")
 }

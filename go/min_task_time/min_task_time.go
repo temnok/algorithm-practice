@@ -24,5 +24,5 @@ package min_task_time
 // t=20   t=10   t=30   t=50   t=40
 
 func minTaskTime(n int, time []int, before [][]int) int {
-	return 0 // TODO
+	panic("TODO")
 }

@@ -1,10 +1,13 @@
 package counting_sort;
 
 public class CountingSort {
-	/*
-	sort array with values less than number in 'max' variable
-	 */
-	public static int [] sort(int [] num, int max) {
-		throw new UnsupportedOperationException();
+	// countingSort should sort nums array using *counting* sort.
+	//
+	// Restrictions:
+	// - nums array is not empty
+	// - num in nums can be any integer, including negative values
+	// - difference between maximum and minimum value in arr won't exceed 1000
+	public static void countingSort(int[] nums) {
+		throw new UnsupportedOperationException("TODO");
 	}
 }

@@ -19,5 +19,5 @@ package topo_sort
 // Expected output: [3, 0, 2, 1]
 
 func topoSort(graph [][]int) []int {
-	return nil // TODO
+	panic("TODO")
 }

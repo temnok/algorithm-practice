@@ -5,5 +5,5 @@ package quick_sort
 // - 0 <= i < arr.length
 // - it's ok to change array in place
 func ithMin(arr []int, i int) int {
-	return 0 // TODO
+	panic("TODO")
 }
