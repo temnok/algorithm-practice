@@ -11,11 +11,11 @@ func TestQuickSort_RandomCases(t *testing.T) {
 		td := newRandomTestData()
 
 		actual := append([]int{}, td.array...)
-		quickSortInts(actual)
+		QuickSortInts(actual)
 
 		if !reflect.DeepEqual(td.expectedArray, actual) {
 			assert.FailNowf(t, "",
-				"quickSortInts(%v):\n  Actual: %v\nExpected: %v",
+				"QuickSortInts(%v):\n  Actual: %v\nExpected: %v",
 				td.array, actual, td.expectedArray,
 			)
 		}
@@ -24,7 +24,7 @@ func TestQuickSort_RandomCases(t *testing.T) {
 
 func TestPerformanceForLargeZeroArray(t *testing.T) {
 	arr := make([]int, 100_000_000)
-	quickSortInts(arr)
+	QuickSortInts(arr)
 }
 
 func TestPerformanceForLargeSparseArray(t *testing.T) {
@@ -36,5 +36,5 @@ func TestPerformanceForLargeSparseArray(t *testing.T) {
 		}
 	}
 
-	quickSortInts(arr)
+	QuickSortInts(arr)
 }

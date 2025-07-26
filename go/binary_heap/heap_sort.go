@@ -1,6 +1,6 @@
 package binary_heap
 
-// heapSort should sort the provided array in non-decreasing fashion using heapSort algorithm
-func heapSort(arr []int) {
+// HeapSort should sort the provided array in non-decreasing fashion using HeapSort algorithm
+func HeapSort(arr []int) {
 	panic("TODO")
 }

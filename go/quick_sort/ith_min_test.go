@@ -18,11 +18,11 @@ func testIthMin_RandomCases(t *testing.T, testCount, maxN int) {
 		td := newRandomTestDataN(maxN)
 
 		expected := td.expectedArray[td.randomIndex]
-		actual := ithMin(td.array, td.randomIndex)
+		actual := IthMin(td.array, td.randomIndex)
 
 		if actual != expected {
 			assert.FailNowf(t, "",
-				"ithMin(%v, %v):\n  Actual: %v\nExpected: %v",
+				"IthMin(%v, %v):\n  Actual: %v\nExpected: %v",
 				td.array, td.randomIndex, actual, expected,
 			)
 		}

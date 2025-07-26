@@ -12,18 +12,18 @@ func TestHeapInit_RandomCases(t *testing.T) {
 		assert.True(t, minHeapIsOK(td.heap))
 
 		actual := append([]int{}, td.array...)
-		heapInit(actual)
+		HeapInit(actual)
 
 		if !minHeapIsOK(actual) {
 			assert.FailNowf(t, "",
-				"heapInit(%v): not a valid heap after the call:\n%v",
+				"HeapInit(%v): not a valid heap after the call:\n%v",
 				td.array, actual,
 			)
 		}
 
 		if !haveSameElements(actual, td.array) {
 			assert.FailNowf(t, "",
-				"heapInit(%v): not same elements after the call:\n%v",
+				"HeapInit(%v): not same elements after the call:\n%v",
 				td.array, actual,
 			)
 		}

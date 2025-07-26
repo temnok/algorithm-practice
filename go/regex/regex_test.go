@@ -44,9 +44,9 @@ func TestRandomCases(t *testing.T) {
 		want, err := regexp.Match("^"+string(pat)+"$", str)
 		assert.NoError(t, err)
 
-		got := matchesFully(string(str), string(pat))
+		got := MatchesFully(string(str), string(pat))
 		if got != want {
-			t.Fatalf("matchesFully(%q, %q):\nwant %v\n got %v", str, pat, want, got)
+			t.Fatalf("MatchesFully(%q, %q):\nwant %v\n got %v", str, pat, want, got)
 		}
 	}
 }

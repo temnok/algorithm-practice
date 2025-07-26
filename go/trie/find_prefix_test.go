@@ -9,9 +9,9 @@ func TestRandomCases(t *testing.T) {
 	for range 10_000 {
 		td := newRandomTestData()
 
-		actual := hasPrefix(td.strings)
+		actual := HasPrefix(td.strings)
 		if actual != td.hasPrefix {
-			assert.FailNowf(t, "", "hasPrefix(%v):\nwant %v\n got %v",
+			assert.FailNowf(t, "", "HasPrefix(%v):\nwant %v\n got %v",
 				td.strings, td.hasPrefix, actual)
 		}
 	}

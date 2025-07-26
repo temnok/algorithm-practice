@@ -11,13 +11,13 @@ func TestStringRandomCases(t *testing.T) {
 		td := newRandomStringTestData()
 
 		actual := append([]string{}, td.array...)
-		mergeSortArray(actual, func(a, b string) int {
+		MergeSortArray(actual, func(a, b string) int {
 			return len(a) - len(b)
 		})
 
 		if !reflect.DeepEqual(td.expectedArray, actual) {
 			assert.FailNowf(t, "",
-				"mergeSortArray(%v):\n  Actual: %v\nExpected: %v",
+				"MergeSortArray(%v):\n  Actual: %v\nExpected: %v",
 				td.array, actual, td.expectedArray,
 			)
 		}

@@ -36,16 +36,16 @@ func (*Array1000) get(i int) int {
 
 func TestBigCount1(t *testing.T) {
 	arr := &Array1{}
-	assert.Equal(t, 0, bigCount(arr, -1))
-	assert.Equal(t, count, bigCount(arr, 0))
-	assert.Equal(t, 0, bigCount(arr, 1))
+	assert.Equal(t, 0, BigCount(arr, -1))
+	assert.Equal(t, count, BigCount(arr, 0))
+	assert.Equal(t, 0, BigCount(arr, 1))
 }
 
 func TestBigCount1000(t *testing.T) {
 	arr := &Array1000{}
-	assert.Equal(t, 0, bigCount(arr, -1))
-	assert.Equal(t, count/1000, bigCount(arr, 0))
-	assert.Equal(t, count/1000, bigCount(arr, 500))
-	assert.Equal(t, count/1000, bigCount(arr, 999))
-	assert.Equal(t, 0, bigCount(arr, 1000))
+	assert.Equal(t, 0, BigCount(arr, -1))
+	assert.Equal(t, count/1000, BigCount(arr, 0))
+	assert.Equal(t, count/1000, BigCount(arr, 500))
+	assert.Equal(t, count/1000, BigCount(arr, 999))
+	assert.Equal(t, 0, BigCount(arr, 1000))
 }

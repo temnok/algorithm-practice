@@ -11,11 +11,11 @@ func TestIntRandomCases(t *testing.T) {
 		td := newRandomIntTestData()
 
 		actual := append([]int{}, td.array...)
-		mergeSortInts(actual)
+		MergeSortInts(actual)
 
 		if !reflect.DeepEqual(td.expectedArray, actual) {
 			assert.FailNowf(t, "",
-				"mergeSortInts(%v):\n  Actual: %v\nExpected: %v",
+				"MergeSortInts(%v):\n  Actual: %v\nExpected: %v",
 				td.array, actual, td.expectedArray,
 			)
 		}

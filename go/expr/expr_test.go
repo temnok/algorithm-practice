@@ -11,9 +11,9 @@ var random = rand.New(rand.NewPCG(0, 0))
 func TestRandomCases(t *testing.T) {
 	for test := 0; test < 100_000; test++ {
 		expr, want, _ := genExpr(random.IntN(10))
-		got := evaluateExpr(expr)
+		got := EvaluateExpr(expr)
 		if got != want {
-			t.Fatalf("evaluateExpr(%v):\nwant %v\n got %v", expr, want, got)
+			t.Fatalf("EvaluateExpr(%v):\nwant %v\n got %v", expr, want, got)
 		}
 	}
 }

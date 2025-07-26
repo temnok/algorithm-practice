@@ -6,18 +6,18 @@ import (
 )
 
 func TestExample(t *testing.T) {
-	assert.Equal(t, []int{3, 0, 2, 1}, topoSort([][]int{{2, 1}, {}, {1}, {0, 2}}))
+	assert.Equal(t, []int{3, 0, 2, 1}, TopoSort([][]int{{2, 1}, {}, {1}, {0, 2}}))
 
-	assert.Equal(t, 0, len(topoSort([][]int{{2, 1}, {3}, {1}, {0, 2}})))
-	assert.Equal(t, 0, len(topoSort([][]int{{0}})))
-	assert.Equal(t, 0, len(topoSort([][]int{{1}, {0}})))
+	assert.Equal(t, 0, len(TopoSort([][]int{{2, 1}, {3}, {1}, {0, 2}})))
+	assert.Equal(t, 0, len(TopoSort([][]int{{0}})))
+	assert.Equal(t, 0, len(TopoSort([][]int{{1}, {0}})))
 }
 
 func TestRandomCases(t *testing.T) {
 	for range 10_000 {
 		td := newRandomTestData()
 
-		actual := topoSort(td.adj)
+		actual := TopoSort(td.adj)
 
 		if td.hasCycle {
 			assert.Equal(t, 0, len(actual))
@@ -36,7 +36,7 @@ func TestRandomCases(t *testing.T) {
 			for _, v := range td.graph[u] {
 				if !(order[u] < order[v]) {
 					assert.FailNowf(t, "",
-						"topoSort(%v):\n  Node %v should come before node %v in the result!\n  Result: %v",
+						"TopoSort(%v):\n  Node %v should come before node %v in the result!\n  Result: %v",
 						td.graph, u, v, actual,
 					)
 				}
