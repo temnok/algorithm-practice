@@ -17,5 +17,46 @@ package max_path
 //  0      1      2      3       4
 
 func MaxPathLength(n int, edges [][]int) int {
-	panic("TODO")
+	adj := make([][][2]int, n)
+	ins := make([]int, n)
+	for _, e := range edges {
+		u, v, w := e[0], e[1], e[2]
+		adj[u] = append(adj[u], [2]int{v, w})
+		ins[v]++
+	}
+
+	order := make([]int, 0, n)
+	for v, c := range ins {
+		if c == 0 {
+			order = append(order, v)
+		}
+	}
+
+	for i := 0; i < len(order); i++ {
+		u := order[i]
+		for _, vw := range adj[u] {
+			v := vw[0]
+			if ins[v]--; ins[v] == 0 {
+				order = append(order, v)
+			}
+		}
+	}
+
+	if len(order) < n {
+		return -1
+	}
+
+	dist := make([]int, n)
+	maxDist := 0
+	for _, u := range order {
+		for _, vw := range adj[u] {
+			v, w := vw[0], vw[1]
+			if d := dist[u] + w; d > dist[v] {
+				dist[v] = d
+				maxDist = max(maxDist, d)
+			}
+		}
+	}
+
+	return maxDist
 }

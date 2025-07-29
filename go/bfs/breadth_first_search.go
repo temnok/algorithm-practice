@@ -14,5 +14,19 @@ package bfs
 //
 // and start node 0, the result should be { 0, 1, 3, 2, 4, 6, 5, 7, 8 }
 func Bfs(graph [][]int, start int) []int {
-	panic("TODO")
+	order := []int{start}
+	visited := make([]bool, len(graph))
+	visited[start] = true
+
+	for i := 0; i < len(order); i++ {
+		u := order[i]
+		for _, v := range graph[u] {
+			if !visited[v] {
+				order = append(order, v)
+				visited[v] = true
+			}
+		}
+	}
+
+	return order
 }

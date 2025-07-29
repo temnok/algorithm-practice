@@ -19,5 +19,33 @@ package topo_sort
 // Expected output: [3, 0, 2, 1]
 
 func TopoSort(graph [][]int) []int {
-	panic("TODO")
+	n := len(graph)
+	ins := make([]int, n)
+	for _, vs := range graph {
+		for _, v := range vs {
+			ins[v]++
+		}
+	}
+
+	order := make([]int, 0, n)
+	for v, c := range ins {
+		if c == 0 {
+			order = append(order, v)
+		}
+	}
+
+	for i := 0; i < len(order); i++ {
+		u := order[i]
+		for _, v := range graph[u] {
+			if ins[v]--; ins[v] == 0 {
+				order = append(order, v)
+			}
+		}
+	}
+
+	if len(order) < n {
+		return nil
+	}
+
+	return order
 }
