@@ -13,18 +13,18 @@ func TestHeapUp_RandomCases(t *testing.T) {
 
 		td.heap[td.randomIndex] -= td.randomValue
 		actual := append([]int{}, td.heap...)
-		heapUp(actual, td.randomIndex)
+		HeapUp(actual, td.randomIndex)
 
 		if !minHeapIsOK(actual) {
 			assert.FailNowf(t, "",
-				"heapUp(%v, %v): not a valid heap after the call:\n%v",
+				"HeapUp(%v, %v): not a valid heap after the call:\n%v",
 				td.heap, td.randomIndex, actual,
 			)
 		}
 
 		if !haveSameElements(actual, td.heap) {
 			assert.FailNowf(t, "",
-				"heapUp(%v, %v): not same elements after the call:\n%v",
+				"HeapUp(%v, %v): not same elements after the call:\n%v",
 				td.heap, td.randomIndex, actual,
 			)
 		}

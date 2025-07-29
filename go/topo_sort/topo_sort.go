@@ -1,6 +1,6 @@
 package topo_sort
 
-// topoSort should perform topological sorting of a directed graph represented by its adjacency list.
+// TopoSort should perform topological sorting of a directed graph represented by its adjacency list.
 // The provided graph can contain duplicate links or links from a node to itself.
 // If graph is not a DAG (i.e. contains cycles) then the empty list should be returned.
 // Otherwise, returned array should contain node numbers as in the following example:
@@ -18,6 +18,6 @@ package topo_sort
 //
 // Expected output: [3, 0, 2, 1]
 
-func topoSort(graph [][]int) []int {
+func TopoSort(graph [][]int) []int {
 	panic("TODO")
 }

@@ -1,6 +1,6 @@
 package quick_sort
 
 // rangeInt should sort int array using *quicksort* algorithm
-func quickSortInts(arr []int) {
+func QuickSortInts(arr []int) {
 	panic("TODO")
 }

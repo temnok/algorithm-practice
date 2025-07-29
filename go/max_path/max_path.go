@@ -1,6 +1,6 @@
 package max_path
 
-// maxPathLength should return max path length within the graph with n nodes and provided edges,
+// MaxPathLength should return max path length within the graph with n nodes and provided edges,
 // or -1 if the graph contains a cycle and thus the max path length is infinity.
 // edges contain triples [u, v, d], each describing *directed* edge from node u to v with distance d (d > 0)
 // between nodes u and v.
@@ -16,6 +16,6 @@ package max_path
 //  *<-----*<-----*<-----*------>*
 //  0      1      2      3       4
 
-func maxPathLength(n int, edges [][]int) int {
+func MaxPathLength(n int, edges [][]int) int {
 	panic("TODO")
 }

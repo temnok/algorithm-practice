@@ -15,11 +15,11 @@ func TestHeapSort_RandomCases(t *testing.T) {
 		sort.Ints(expected)
 
 		actual := append([]int{}, td.array...)
-		heapSort(actual)
+		HeapSort(actual)
 
 		if !reflect.DeepEqual(actual, expected) {
 			assert.FailNowf(t, "",
-				"heapSort(%v):\nwant %v\n got %v", td.array, expected, actual,
+				"HeapSort(%v):\nwant %v\n got %v", td.array, expected, actual,
 			)
 		}
 	}
