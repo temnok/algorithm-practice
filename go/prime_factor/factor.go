@@ -5,5 +5,24 @@ package prime_factor
 // For example, for n = 26, the answer should be
 // [0, 0, 0, 0, 2, 0, 2, 0, 2, 3, 2, 0, 2, 0, 2, 3, 2, 0, 2, 0, 2, 3, 2, 0, 2, 5]
 func listSmallestPrimeFactors(n int) []int16 {
-	panic("TODO")
+	factors := make([]int16, n)
+
+	var primes []int
+	for i := 2; i < n; i++ {
+		f := int(factors[i])
+		if f == 0 {
+			f = i
+			primes = append(primes, i)
+		}
+
+		for _, p := range primes {
+			if p > f || p*i >= n {
+				break
+			}
+
+			factors[p*i] = int16(p)
+		}
+	}
+
+	return factors
 }
