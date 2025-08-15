@@ -1,5 +1,5 @@
 from breadth_first_search import bfs
-from random_test_data import RandomTestData
+from bfs_random_test_data import RandomTestData
 
 
 def test_bfs():

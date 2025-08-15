@@ -1,5 +1,5 @@
 from min_path import min_path
-from random_test_data import RandomTestData
+from bfs_random_test_data import RandomTestData
 
 
 def test_min_path():
