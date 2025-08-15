@@ -5,10 +5,10 @@ random = rand.Random(0)
 
 class RandomTestData:
 	def __init__(self):
-		n, max_val = random.randrange(0, 50), random.randrange(0, 50)
-		self.array = [random.randrange(0, 1 + max_val) for _ in range(n)]
+		n, max_val = random.randrange(50), random.randrange(50)
+		self.array = [random.randrange(1 + max_val) for _ in range(n)]
 
-		self.val = random.randrange(0, 1 + max_val)
+		self.val = random.randrange(1 + max_val)
 		self.expected_first = -1
 		self.expected_last = -1
 		self.expected_count = 0

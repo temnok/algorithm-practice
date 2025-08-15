@@ -6,14 +6,14 @@ random = rand.Random(0)
 
 class RandomLabyrinthTestData:
 	def __init__(self):
-		m, n = 1+random.randrange(0, 50), 1+random.randrange(0, 50)
+		m, n = 1+random.randrange(50), 1+random.randrange(50)
 
 		self.labyrinth = [[False]*n for _ in range(m)]
 		self.min_dist = 0
 	
 		for i in range(m):
 			for j in range(n):
-				self.labyrinth[i][j] = random.randrange(0, 2) == 1
+				self.labyrinth[i][j] = random.randrange(2) == 1
 	
 		self.labyrinth[0][0] = False
 		self.labyrinth[m-1][n-1] = False

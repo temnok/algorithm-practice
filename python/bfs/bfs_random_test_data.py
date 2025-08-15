@@ -11,20 +11,20 @@ class RandomTestData:
 		self.min_path = []
 		self.order = []
 
-		n = 1 + random.randrange(0, 50)
-		max_adj = random.randrange(0, 50)
+		n = 1 + random.randrange(50)
+		max_adj = random.randrange(50)
 
 		for _ in range(n):
 			adj = []
-			m = random.randrange(0, 1 + max_adj)
+			m = random.randrange(1 + max_adj)
 			for _ in range(m):
-				v = random.randrange(0, n)
+				v = random.randrange(n)
 				adj.append(v)
 
 			self.graph.append(adj)
 
-		self.start = random.randrange(0, n)
-		self.end = random.randrange(0, n)
+		self.start = random.randrange(n)
+		self.end = random.randrange(n)
 		self.walk()
 		self.min_dist = len(self.min_path) - 1
 
