@@ -41,5 +41,4 @@ func TestBfsRandomCases(t *testing.T) {
 			)
 		}
 	}
-
 }
