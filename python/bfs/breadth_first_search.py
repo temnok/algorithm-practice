@@ -12,7 +12,7 @@
 #
 # and start node 0, the result should be { 0, 1, 3, 2, 4, 6, 5, 7, 8 }
 
-def bfs(graph: list, start: int) -> list:
+def bfs(graph: list[list[int]], start: int) -> list[int]:
 	# raise NotImplementedError('TODO')
 	n = len(graph)
 	visited = [False] * n

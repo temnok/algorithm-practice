@@ -5,7 +5,7 @@
 from collections import deque
 
 
-def min_path(graph: list, start: int, end: int) -> list:
+def min_path(graph: list[list[int]], start: int, end: int) -> list[int]:
 	# raise NotImplementedError('TODO')
 	n = len(graph)
 	prev = [-1] * n

@@ -4,7 +4,7 @@
 from collections import deque
 
 
-def min_dist(graph: list, start: int, end: int) -> int:
+def min_dist(graph: list[list[int]], start: int, end: int) -> int:
 	# raise NotImplementedError('TODO')
 
 	n = len(graph)

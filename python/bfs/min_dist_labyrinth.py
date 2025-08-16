@@ -7,7 +7,7 @@
 from collections import deque
 
 
-def min_dist_labyrinth(labyrinth: list) -> int:
+def min_dist_labyrinth(labyrinth: list[list[bool]]) -> int:
 	# raise NotImplementedError('TODO')
 
 	m, n = len(labyrinth), len(labyrinth[0])

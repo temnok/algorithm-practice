@@ -12,7 +12,7 @@
 # 6->7->8-
 #
 # and start node 0, the result should be either { 0, 1, 2, 5, 8, 4, 7, 3, 6 } or { 0, 3, 6, 7, 8, 2, 5, 4, 1 }
-def dfs(graph: list, start: int) -> list:
+def dfs(graph: list[list[int]], start: int) -> list[int]:
 	# raise NotImplementedError('TODO')
 
 	visited = [False] * len(graph)
