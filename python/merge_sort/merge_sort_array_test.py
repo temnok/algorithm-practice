@@ -6,7 +6,7 @@ def test_string_random_cases():
 	for _ in range(1_000):
 		td = RandomStringsTestData()
 
-		got = td.array.copy() 
+		got = td.array.copy()
 		merge_sort_array(got, lambda a, b: len(a) - len(b))
 
 		assert got == td.want_array, \
