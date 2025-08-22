@@ -16,9 +16,9 @@ package min_task_time
 // task 2 must be done first (t=30), then task 3 (t=30+50=80), then tasks 4 and (1-then-0) can be done in parallel
 // (t=80+max(40, 10+20)=120)
 //
-//   ----------------------
-//  |       |             |
-//  v       v             |
+//  +-------+------------+
+//  |       |            |
+//  v       v            |
 //  *<-----*<-----*----->*------>*
 //  0      1      2      3       4
 // t=20   t=10   t=30   t=50   t=40

@@ -2,6 +2,7 @@ import random as rand
 
 random = rand.Random(0)
 
+
 class RandomStringsTestData:
 	def __init__(self):
 		n, max_val = random.randrange(50), random.randrange(1_000_000_000)
