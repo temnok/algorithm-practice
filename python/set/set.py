@@ -29,7 +29,6 @@ def generic_random_cases(type_name, new_func):
 		expected_set = set()
 
 		for _ in range(100):
-
 			val = random.randrange(max_val + 1)
 
 			p = random.random()
