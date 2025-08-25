@@ -1,4 +1,4 @@
-from ..set.set import generic_random_cases
+from set import generic_random_cases
 from splay_tree import SplayTree
 
 

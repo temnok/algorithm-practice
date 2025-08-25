@@ -19,33 +19,34 @@ class Set(ABC):
 def generic_random_cases(type_name, new_func):
 	random = rand.Random(0)
 
-	for _ in range(10_000):
-		set = new_func()
+	for test in range(10_000):
+		actual_set = new_func()
 
 		max_val = random.randrange(100)
 		add_prob = random.random()
 		find_prob = random.random()
 
-		expected_set = {}
+		expected_set = set()
 
-		for _ in range(1_000):
+		for _ in range(100):
+
 			val = random.randrange(max_val + 1)
 
 			p = random.random()
 			if p < add_prob:
-				expected = not expected_set[val]
-				actual = set.add(val)
+				expected = val not in expected_set
+				actual = actual_set.add(val)
 				assert actual == expected, \
 					f'{type_name}({expected_set})\n.add({val}):\nwant {expected}\n got {actual}'
-				expected_set[val] = True
+				expected_set.add(val)
 			elif p < find_prob:
-				expected = expected_set[val]
-				actual = set.contains(val)
+				expected = val in expected_set
+				actual = actual_set.contains(val)
 				assert actual == expected, \
 					f'{type_name}({expected_set})\n.contains({val}):\nwant {expected}\n got {actual}'
 			else:
-				expected = expected_set[val]
-				actual = set.remove(val)
+				expected = val in expected_set
+				actual = actual_set.remove(val)
 				assert actual == expected, \
 					f'{type_name}({expected_set})\n.remove({val}):\nwant {expected}\n got {actual}'
-				del(expected_set[val])
+				expected_set.discard(val)

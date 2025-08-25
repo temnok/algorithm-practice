@@ -1,4 +1,4 @@
-from ..set.set import Set
+from set import Set
 
 
 class SplayTree(Set):
