@@ -18,4 +18,22 @@
 # Expected output: [3, 0, 2, 1]
 
 def topo_sort(graph: list[list[int]]) -> list[int]:
-	raise NotImplementedError('TODO')
+	# raise NotImplementedError('TODO')
+
+	n = len(graph)
+	ins = [0] * n
+	for vs in graph:
+		for v in vs:
+			ins[v] += 1
+
+	q = [u for u in range(n) if ins[u] == 0]
+	i = 0
+	while i < len(q):
+		u = q[i]
+		i += 1
+		for v in graph[u]:
+			ins[v] -= 1
+			if ins[v] == 0:
+				q.append(v)
+
+	return q if len(q) == n else []

@@ -23,4 +23,35 @@
 # t=20   t=10   t=30   t=50   t=40
 
 def min_task_time(n: int, time: list[int], before: list[list[int]]) -> int:
-	raise NotImplementedError('TODO')
+	# raise NotImplementedError('TODO')
+
+	graph = [[] for _ in range(n)]
+	ins = [0]*n
+	for e in before:
+		u, v = e[0], e[1]
+		graph[u].append(v)
+		ins[v] += 1
+
+	order = []
+	for v, in_count in enumerate(ins):
+		if in_count == 0:
+			order.append(v)
+
+	i = 0
+	while i < len(order):
+		u = order[i]
+		i += 1
+		for v in graph[u]:
+			ins[v] -= 1
+			if ins[v] == 0:
+				order.append(v)
+
+	max_time = max(time)
+	dist = time.copy()
+
+	for u in order:
+		for v in graph[u]:
+			dist[v] = max(dist[v], dist[u] + time[v])
+			max_time = max(max_time, dist[v])
+
+	return max_time

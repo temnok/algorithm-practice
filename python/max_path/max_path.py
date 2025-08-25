@@ -15,4 +15,40 @@
 #  *<-----*<-----*<-----*------>*
 #  0      1      2      3       4
 def max_path_length(n: int, edges: list[list[int]]) -> int:
-	raise NotImplementedError('TODO')
+	# raise NotImplementedError('TODO')
+
+	graph = [[] for _ in range(n)]
+	ins = [0]*n
+	for e in edges:
+		u, v = e[0], e[1]
+		graph[u].append(e)
+		ins[v] += 1
+
+	order = []
+	for v, in_count in enumerate(ins):
+		if in_count == 0:
+			order.append(v)
+
+	i = 0
+	while i < len(order):
+		u = order[i]
+		i += 1
+
+		for e in graph[u]:
+			v = e[1]
+			ins[v] -= 1
+			if ins[v] == 0:
+				order.append(v)
+
+	if len(order) < n:
+		return -1
+
+	dist = [0]*n
+	max_dist = 0
+	for u in order:
+		for e in graph[u]:
+			v, w = e[1], e[2]
+			dist[v] = max(dist[v], dist[u]+w)
+			max_dist = max(max_dist, dist[v])
+
+	return max_dist
