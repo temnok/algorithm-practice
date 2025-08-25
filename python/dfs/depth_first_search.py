@@ -13,19 +13,4 @@
 #
 # and start node 0, the result should be either { 0, 1, 2, 5, 8, 4, 7, 3, 6 } or { 0, 3, 6, 7, 8, 2, 5, 4, 1 }
 def dfs(graph: list[list[int]], start: int) -> list[int]:
-	# raise NotImplementedError('TODO')
-
-	visited = [False] * len(graph)
-	visited[start] = True
-	stack = [start]
-	ans = []
-
-	while len(stack) > 0:
-		u = stack.pop()
-		ans.append(u)
-		for v in graph[u]:
-			if not visited[v]:
-				visited[v] = True
-				stack.append(v)
-
-	return ans
+	raise NotImplementedError('TODO')

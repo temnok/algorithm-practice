@@ -13,21 +13,4 @@
 # and start node 0, the result should be { 0, 1, 3, 2, 4, 6, 5, 7, 8 }
 
 def bfs(graph: list[list[int]], start: int) -> list[int]:
-	# raise NotImplementedError('TODO')
-	n = len(graph)
-	visited = [False] * n
-
-	q = [start]
-	visited[start] = True
-
-	i = 0
-	while i < len(q):
-		u = q[i]
-		i += 1
-
-		for v in graph[u]:
-			if not visited[v]:
-				visited[v] = True
-				q.append(v)
-
-	return q
+	raise NotImplementedError('TODO')
