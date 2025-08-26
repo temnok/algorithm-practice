@@ -1,5 +1,7 @@
 package mst
 
+import "sort"
+
 // KruskalMinimumSpanningForest should return subset of edges that form
 // "Minimum Spanning Forest" of the input *undirected* graph represented
 // by n nodes and provided list of edges. Each edge is represented by three
@@ -14,5 +16,52 @@ package mst
 // * order of returned edges is ignored
 // * no duplicates are allowed in the returned list
 func KruskalMinimumSpanningForest(n int, edges [][]int) [][]int {
-	panic("TODO")
+	//panic("TODO")
+
+	sort.Slice(edges, func(i, j int) bool {
+		return edges[i][2] < edges[j][2]
+	})
+
+	par, size := make([]int, n), make([]int, n)
+	for i := range n {
+		par[i], size[i] = i, 1
+	}
+
+	ans := [][]int{}
+
+	for _, e := range edges {
+		u, v := e[0], e[1]
+		if union(par, size, u, v) {
+			ans = append(ans, e)
+		}
+	}
+
+	return ans
+}
+
+func union(par, size []int, i, j int) bool {
+	i, j = find(par, i), find(par, j)
+	if i == j {
+		return false
+	}
+
+	if size[i] < size[j] {
+		par[i] = j
+		size[j] += size[i]
+	} else {
+		par[j] = i
+		size[i] += size[j]
+	}
+
+	return true
+}
+
+func find(par []int, i int) int {
+	for par[i] != i {
+		p := par[i]
+		par[i] = par[p]
+		i = p
+	}
+
+	return i
 }
