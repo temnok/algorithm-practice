@@ -78,7 +78,7 @@ func heapRemove(heap *[][]int) []int {
 func heapUp(heap [][]int, i int) {
 	e := heap[i]
 
-	for j := (i - 1) / 2; i > 0 && heap[j][2] > e[2]; i, j = j, (j-1)/2 {
+	for j := (i - 1) / 2; i > 0 && e[2] < heap[j][2]; i, j = j, (j-1)/2 {
 		heap[i] = heap[j]
 	}
 
