@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-public class HeapSetTest {
+public class HeapUpdateTest {
 	@Test
 	public void testRandomCases() {
 		for (int test = 0; test < 1_000; test++) {
@@ -14,7 +14,7 @@ public class HeapSetTest {
 			Assert.assertTrue(randomTestData.minHeapIsOK(td.heap));
 
 			var actual = td.heap.clone();
-			HeapSet.heapSet(actual, td.randomIndex, td.randomValue);
+			HeapUpdate.heapUpdate(actual, td.randomIndex, td.randomValue);
 
 			td.heap[td.randomIndex] = td.randomValue;
 
