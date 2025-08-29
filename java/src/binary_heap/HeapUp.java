@@ -7,7 +7,7 @@ public class HeapUp {
 
 		var val = heap[i];
 
-		for (var j = (i-1)/2; i > 0 && heap[j] > val; i = j, j = (j-1)/2) {
+		for (var j = (i-1)/2; i > 0 && val < heap[j]; i = j, j = (j-1)/2) {
 			heap[i] = heap[j];
 		}
 
