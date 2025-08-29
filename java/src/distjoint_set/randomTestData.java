@@ -25,17 +25,17 @@ class randomTestData {
 		expectedFinds = new int[ops];
 
 		for (var op = 0; op < ops; op++) {
-			int i = rand.nextInt(n), j = rand.nextInt(n), k = rand.nextInt(n);
-			indexes[op*3] = i;
-			indexes[op*3+1] = j;
+			int j = rand.nextInt(n), i = rand.nextInt(n), k = rand.nextInt(n);
+			indexes[op*3] = j;
+			indexes[op*3+1] = i;
 			indexes[op*3+2] = k;
 
-			i = find(par, i); j = find(par, j);
-			if (i != j) {
+			j = find(par, j); i = find(par, i);
+			if (j != i) {
 				expectedUnions[op] = true;
 
-				if (size[i] > size[j]) { par[j] = i; size[i] += size[j]; }
-				else { par[i] = j; size[j] += size[i]; }
+				if (size[j] >= size[i]) { par[i] = j; size[j] += size[i]; }
+				else { par[j] = i; size[i] += size[j]; }
 			}
 			expectedFinds[op] = find(par, k);
 		}
@@ -43,10 +43,11 @@ class randomTestData {
 
 	static int find(int[] par, int i) {
 		while (i != par[i]) {
-			var j = i;
-			i = par[i];
-			par[j] = par[i];
+			var p = par[i];
+			par[i] = par[p];
+			i = p;
 		}
+
 		return i;
 	}
 }
