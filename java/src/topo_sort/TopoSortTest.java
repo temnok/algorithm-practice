@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class TopoSortTest {
 	@Test
 	public void testExample() {
-		Assert.assertArrayEquals(new int[] {3, 0, 2, 1}, TopoSort.topoSort(new int[][]{{2, 1}, {}, {1}, {0, 2}}));
+		Assert.assertEquals(Arrays.toString(new int[] {3, 0, 2, 1}), Arrays.toString(TopoSort.topoSort(new int[][]{{2, 1}, {}, {1}, {0, 2}})));
 
 		Assert.assertArrayEquals(new int[] {}, TopoSort.topoSort(new int[][]{{2, 1}, {3}, {1}, {0, 2}}));
 		Assert.assertArrayEquals(new int[] {}, TopoSort.topoSort(new int[][]{{0}}));
