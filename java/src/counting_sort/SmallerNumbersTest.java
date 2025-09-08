@@ -20,7 +20,7 @@ public class SmallerNumbersTest {
 
 			if (!Arrays.equals(td.getSmallerNumbers(), actual)) {
 				Assert.fail(
-					String.format("sortInts(%s):\n  Actual: %s\nExpected: %s",
+					String.format("getSmallerNumbers(%s):\n  Actual: %s\nExpected: %s",
 						Arrays.toString(td.asInt()),
 						Arrays.toString(actual),
 						Arrays.toString(td.getSmallerNumbers())

@@ -14,7 +14,7 @@ public class BellmanFordMinPathTest {
 			var actual = BellmanFordMinPath.bellmanFordPath(td.n, td.edges, td.start);
 			if (!Arrays.equals(actual, td.expected)) {
 				Assert.fail(String.format(
-					"dijkstraMinPath(%s, %s, %s):\nwant %s\n got %s",
+					"bellmanFordPath(%s, %s, %s):\nwant %s\n got %s",
 					td.n, Arrays.deepToString(td.edges), td.start, Arrays.toString(td.expected), Arrays.toString(actual)
 				));
 			}

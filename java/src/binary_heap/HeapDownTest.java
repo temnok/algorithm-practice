@@ -15,7 +15,7 @@ public class HeapDownTest {
 
 			td.heap[td.randomIndex] += td.randomValue;
 			var actual = td.heap.clone();
-			HeapDown.heapDown(actual, td.randomIndex, actual.length);
+			HeapDown.heapDown(actual, actual.length, td.randomIndex);
 
 			if (!randomTestData.minHeapIsOK(actual)) {
 				Assert.fail(

@@ -21,8 +21,39 @@ public class TopoSortKahn {
 	//
  	// Expected output: [3, 0, 2, 1]
 	//
-	public static int[] topoSort(int[][] adjacentyList) {
-		throw new UnsupportedOperationException("TODO");
+	public static int[] topoSort(int[][] adjacencyList) {
+//		throw new UnsupportedOperationException("TODO");
+
+		var n = adjacencyList.length;
+		var ins = new int[n];
+		for (var row: adjacencyList) {
+			for (var v: row) {
+				ins[v]++;
+			}
+		}
+
+		var order = new int[n];
+		var m = 0;
+		for (var u = 0; u < n; u++) {
+			if (ins[u] == 0) {
+				order[m++] = u;
+			}
+		}
+
+		for (var i = 0; i < m; i++) {
+			var u = order[i];
+			for (var v: adjacencyList[u]) {
+				if (--ins[v] == 0) {
+					order[m++] = v;
+				}
+			}
+		}
+
+		if (m < n) {
+			return new int[] {};
+		}
+
+		return order;
 	}
 
 }
