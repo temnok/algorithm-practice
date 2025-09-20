@@ -1,17 +1,17 @@
-package tree_triversal;
+package tree_traversal;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.*;
 
-public class TreeTriversalTest {
+public class TreeTraversalTest {
 	@Test
 	public void testInorder() {
 		randomTestData td = new randomTestData(100);
 		Node root = td.nodes[0];
 
-		var actual = TreeTriversal.inorder(root, td.nodes.length);
+		var actual = TreeTraversal.inorder(root, td.nodes.length);
 		List<Integer> values = new ArrayList<>();
 		getInorder(root, values);
 		int[] expected = values.stream().mapToInt(Integer::intValue).toArray();
@@ -27,7 +27,7 @@ public class TreeTriversalTest {
 		randomTestData td = new randomTestData(100);
 		Node root = td.nodes[0];
 
-		var actual = TreeTriversal.preorder(root, td.nodes.length);
+		var actual = TreeTraversal.preorder(root, td.nodes.length);
 		List<Integer> values = new ArrayList<>();
 		getPreorder(root, values);
 		int[] expected = values.stream().mapToInt(Integer::intValue).toArray();
@@ -43,7 +43,7 @@ public class TreeTriversalTest {
 		randomTestData td = new randomTestData(100);
 		Node root = td.nodes[0];
 
-		var actual = TreeTriversal.postorder(root, td.nodes.length);
+		var actual = TreeTraversal.postorder(root, td.nodes.length);
 		List<Integer> values = new ArrayList<>();
 		getPostorder(root, values);
 		int[] expected = values.stream().mapToInt(Integer::intValue).toArray();
@@ -59,7 +59,7 @@ public class TreeTriversalTest {
 		randomTestData td = new randomTestData(100);
 		Node root = td.nodes[0];
 
-		var actual = TreeTriversal.bfs(root, td.nodes.length);
+		var actual = TreeTraversal.bfs(root, td.nodes.length);
 		List<Integer> values = new ArrayList<>();
 		getBfs(root, values);
 		int[] expected = values.stream().mapToInt(Integer::intValue).toArray();

@@ -1,8 +1,5 @@
 package min_task_time;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MinTaskTime {
 	// minTaskTime should return minimal time for completing n tasks where each task i takes time[i] > 0 to complete.
 	// Tasks may have dependencies so one must be performed strictly before another.
@@ -27,55 +24,6 @@ public class MinTaskTime {
 	//  0      1      2      3       4
 	// t=20   t=10   t=30   t=50   t=40
 	public static int minTaskTime(int n, int[] time, int[][] before) {
-//		throw new UnsupportedOperationException("TODO");
-
-		List<Integer>[] adj = new List[n];
-		for (var u = 0; u < n; u++) {
-			adj[u] = new ArrayList<>();
-		}
-
-		var ins = new int[n];
-
-		for (var e: before) {
-			int u = e[0], v = e[1];
-			adj[u].add(v);
-			ins[v]++;
-		}
-
-		// topo sort
-		var order = new int[n];
-		var m = 0;
-
-		for (var u = 0; u < n; u++) {
-			if (ins[u] == 0) {
-				order[m++] = u;
-			}
-		}
-
-		for (var i = 0; i < m; i++) {
-			var u = order[i];
-			for (var v: adj[u]) {
-				if (--ins[v] == 0) {
-					order[m++] = v;
-				}
-			}
-		}
-
-		// topo-order walk
-		var dist = new int[n];
-		var maxDist = 0;
-		for (var u = 0; u < n; u++) {
-			dist[u] = time[u];
-			maxDist = Math.max(maxDist, dist[u]);
-		}
-
-		for (var u: order) {
-			for (var v: adj[u]) {
-				dist[v] = Math.max(dist[v], dist[u] + time[v]);
-				maxDist = Math.max(maxDist, dist[v]);
-			}
-		}
-
-		return maxDist;
+		throw new UnsupportedOperationException("TODO");
 	}
 }
