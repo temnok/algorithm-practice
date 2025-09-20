@@ -1,4 +1,4 @@
-package tree_traversal;
+package tree_triversal;
 
 public class Node {
 	public final int val;
