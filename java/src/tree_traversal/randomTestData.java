@@ -1,4 +1,4 @@
-package tree_triversal;
+package tree_traversal;
 
 import org.junit.Assert;
 

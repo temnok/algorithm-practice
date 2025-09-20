@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class FloydWarshallMinPath {
 	public static final int[][] floydWarshallMinPath(int n, int[][] edges) {
-//		throw new UnsupportedOperationException();
+//		throw new UnsupportedOperationException("TODO");
 
 		var dist = new int[n][n];
 		for (var i = 0; i < n; i++) {
