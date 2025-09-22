@@ -15,7 +15,7 @@ public class ExprTest {
 			var got = Expr.evaluateExpr(want.expr);
 
 			if (want.val != got) {
-				Assert.assertEquals(String.format("evaluateExpr(\"%s\")", want.expr), want.val, got);
+				Assert.assertEquals(String.format("evaluateExpr(\"%s\"), iteration - %s", want.expr, test), want.val, got);
 			}
 		}
 	}

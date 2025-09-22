@@ -3,6 +3,7 @@ package dijkstra;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class DijkstraMinPath {
 	// dijkstraMinPath should return min distance to all nodes from start node,
@@ -12,93 +13,93 @@ public class DijkstraMinPath {
 	// For example, if n = 4, edges = [[0, 2, 10], [0, 1, 100], [2, 1, 20]] and start = 0 then
 	// result should be [0, 30, 10, -1]
 	public static int[] dijkstraMinPath(int n, int[][] edges, int start) {
-//		throw new UnsupportedOperationException("TODO");
+		int result [] = new int[n];
+		Arrays.fill(result, -1);
 
-		var heap = new Node[n];
-		for (var i = 0; i < n; i++) {
-			heap[i] = new Node(i);
+		Node[] heap = IntStream.range(0, n).mapToObj(value -> new Node(value)).toArray(Node[]::new);
+		for (int [] e : edges) {
+			heap[e[0]].edges.add(new Edge(heap[e[1]], e[2]));
 		}
 
-		for (var e: edges) {
-			int u = e[0], v = e[1], l = e[2];
-			heap[u].edges.add(new Edge(heap[v], l));
-		}
-
-		heap[start].dist = 0;
+		heap[start].distance = 0;
 		heapUp(heap, heap[start]);
 
-		var dist = new int[n];
-		Arrays.fill(dist, -1);
-
-		while (heap[0].dist < Integer.MAX_VALUE) {
-			var u = heap[0];
-			dist[u.i] = u.dist;
-
-			for (var e: u.edges) {
-				if (dist[e.v.i] < 0) {
-					var d = u.dist + e.len;
-					if (d < e.v.dist) {
-						e.v.dist = d;
-						heapUp(heap, e.v);
-					}
+		while (heap[0].distance != Integer.MAX_VALUE) {
+			Node cur = heap[0];
+			for (Edge e : cur.edges) {
+				if (!e.to.visited && e.to.distance > cur.distance + e.distance) {
+					e.to.distance = cur.distance + e.distance;
+					heapUp(heap, e.to);
 				}
 			}
-
-			u.dist = Integer.MAX_VALUE;
-			heapDown(heap, u);
+			result[cur.id] = cur.distance;
+			cur.visited = true;
+			cur.distance = Integer.MAX_VALUE;
+			heapDown(heap, cur, n);
 		}
 
-		return dist;
+		return result;
 	}
 
-	private static void heapUp(Node[] heap, Node cur) {
-		var i = cur.heapI;
+	private static void heapUp(Node[] heap, Node node) {
+		int val = node.distance;
+		int i = node.heapId;
 
-		for (var j = (i-1)/2; i > 0 && cur.dist < heap[j].dist; i = j, j = (j-1)/2) {
-			heap[i] = heap[j];
-			heap[i].heapI = i;
-		}
-
-		heap[i] = cur;
-		cur.heapI = i;
-	}
-
-	private static void heapDown(Node[] heap, Node cur) {
-		var i = cur.heapI;
-
-		for (var j = i*2 + 1; j < heap.length; i = j, j = j*2 + 1) {
-			if (j+1 < heap.length && heap[j+1].dist < heap[j].dist) {
-				j++;
+		for (int j = (i - 1)/2; i > 0; i = j, j = (j - 1)/2) {
+			if (val >= heap[j].distance) {
+				break;
 			}
 
-			if (cur.dist <= heap[j].dist) break;
-
 			heap[i] = heap[j];
-			heap[i].heapI = i;
+			heap[i].heapId = i;
 		}
 
-		heap[i] = cur;
-		cur.heapI = i;
+		heap[i] = node;
+		heap[i].heapId = i;
 	}
-}
 
-class Node {
-	List<Edge> edges = new ArrayList<>();
-	int i, heapI, dist;
+	private static void heapDown(Node[] heap, Node node, int n) {
+		int val = node.distance;
+		int i = node.heapId;
 
-	Node(int i) {
-		this.i = i;
-		this.heapI = i;
-		this.dist = Integer.MAX_VALUE;
+		for (int j = 2*i + 1; j < n; i = j, j = 2*j + 1) {
+			if (j + 1 < n && heap[j + 1].distance < heap[j].distance) {
+				j = j + 1;
+			}
+
+			if (val <= heap[j].distance) {
+				break;
+			}
+			heap[i] = heap[j];
+			heap[i].heapId = i;
+		}
+
+		heap[i] = node;
+		heap[i].heapId = i;
 	}
-}
 
-class Edge {
-	final Node v;
-	final int len;
+	private static class Node {
+		public List<Edge> edges = new ArrayList<>();
+		int id;
+		int heapId;
 
-	Edge(Node v, int len) {
-		this.v = v;
-		this.len = len;
+		int distance = Integer.MAX_VALUE;
+
+		boolean visited;
+
+		public Node(int id) {
+			this.id = id;
+			this.heapId = id;
+		}
+	}
+
+	private static class Edge {
+		Node to;
+		int distance;
+
+		public Edge(Node i, int d) {
+			this.to = i;
+			this.distance = d;
+		}
 	}
 }

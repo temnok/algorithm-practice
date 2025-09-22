@@ -1,5 +1,8 @@
 package distjoint_set;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 public class DisjointSet {
 	private int[] par, size;
 
@@ -7,12 +10,9 @@ public class DisjointSet {
 	public DisjointSet(int n) {
 //		throw new UnsupportedOperationException("TODO");
 
-		par = new int[n];
+		par = IntStream.range(0, n).toArray();
 		size = new int[n];
-		for (var i = 0; i < n; i++) {
-			par[i] = i;
-			size[i] = 1;
-		}
+		Arrays.fill(size, 1);
 	}
 
 	// union should return false if elements i and j are already in the same set
@@ -20,19 +20,18 @@ public class DisjointSet {
 	public boolean union(int i, int j) {
 //		throw new UnsupportedOperationException("TODO");
 
-		i = find(i);
-		j = find(j);
+		int parI = find(i), parJ = find(j);
 
-		if (i == j) {
+		if (parI == parJ) {
 			return false;
 		}
 
-		if (size[i] < size[j]) {
-			par[i] = j;
-			size[j] += size[i];
+		if (size[parI] >= size[parJ]) {
+			par[parJ] = parI;
+			size[parI] += size[parJ];
 		} else {
-			par[j] = i;
-			size[i] += size[j];
+			par[parI] = parJ;
+			size[parJ] += size[parI];
 		}
 
 		return true;
@@ -42,10 +41,10 @@ public class DisjointSet {
 	public int find(int i) {
 //		throw new UnsupportedOperationException("TODO");
 
-		while (i != par[i]) {
-			var p = par[i];
-			par[i] = par[p];
-			i = p;
+		while (par[i] != i) {
+			int j = i;
+			i = par[i];
+			par[j] = i;
 		}
 
 		return i;
