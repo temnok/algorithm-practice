@@ -1,10 +1,5 @@
 package expr;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Stack;
-
 public class Expr {
 	// evaluateExpr should return 64-bit integer result of evaluating expression in expr.
 	// Expression can contain 1-digit integers '0'..'9', brackets '(', ')' and

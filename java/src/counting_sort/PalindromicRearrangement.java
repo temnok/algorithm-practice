@@ -9,6 +9,6 @@ public class PalindromicRearrangement {
 	 *
 	 */
 	public static String getSmallestPalindrom(String palindrom) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException("TODO");
 	}
 }

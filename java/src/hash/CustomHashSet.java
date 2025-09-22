@@ -2,16 +2,17 @@ package hash;
 
 public class CustomHashSet<T> {
 	public Node [] nodes;
+
 	public boolean contains(T val) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException("TODO");
 	}
 
 	public boolean add(T val) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException("TODO");
 	}
 
 	public boolean remove(T val) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException("TODO");
 	}
 
 	public static class Node<T> {

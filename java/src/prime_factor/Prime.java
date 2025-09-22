@@ -1,6 +1,5 @@
 package prime_factor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Prime {
