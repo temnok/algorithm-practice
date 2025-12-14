@@ -5,7 +5,7 @@ import set.Set;
 import java.util.Random;
 
 public class SkipList implements Set {
-	Node root = new Node(0,33);
+	Node root = new Node(0, 33);
 	int height = 1;
 	static Random random = new Random();
 
@@ -19,7 +19,11 @@ public class SkipList implements Set {
 			return false;
 		}
 
-		var h = 1 + Integer.numberOfTrailingZeros(random.nextInt());
+		var h = 1;
+		while (random.nextInt(2) == 0 && h < root.next.length) {
+			h++;
+		}
+		
 		cur = new Node(val, h);
 
 		for (var i = 0; i < h && i < height; i++) {
