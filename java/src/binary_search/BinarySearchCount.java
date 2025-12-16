@@ -16,10 +16,10 @@ public class BinarySearchCount {
 		}
 
 		var l0 = l;
-		l = 0; r = arr.length;
+		r = arr.length;
 		while (l < r) {
 			var m = (l + r)/2;
-			if (arr[m] <= val) {
+			if (arr[m] == val) {
 				l = m+1;
 			} else {
 				r = m;

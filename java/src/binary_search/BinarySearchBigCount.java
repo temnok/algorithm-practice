@@ -21,10 +21,10 @@ public class BinarySearchBigCount {
 		}
 
 		var l0 = l;
-		l = 0; r = arr.length();
+		r = arr.length();
 		while (l < r) {
 			var m = (l + r)/2;
-			if (arr.get(m) <= val) {
+			if (arr.get(m) == val) {
 				l = m+1;
 			} else {
 				r = m;
