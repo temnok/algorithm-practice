@@ -7,7 +7,8 @@ func BigCount(arr interface {
 }, val int) int {
 	l, r := 0, arr.len()
 	for l < r {
-		if m := (l + r) / 2; arr.get(m) < val {
+		m := (l + r) / 2
+		if arr.get(m) < val {
 			l = m + 1
 		} else {
 			r = m
@@ -15,9 +16,10 @@ func BigCount(arr interface {
 	}
 
 	l0 := l
-	l, r = 0, arr.len()
+	r = arr.len()
 	for l < r {
-		if m := (l + r) / 2; arr.get(m) <= val {
+		m := (l + r) / 2
+		if arr.get(m) == val {
 			l = m + 1
 		} else {
 			r = m

@@ -4,7 +4,8 @@ package binary_search
 func CountInts(arr []int, val int) int {
 	l, r := 0, len(arr)
 	for l < r {
-		if m := (l + r) / 2; arr[m] < val {
+		m := (l + r) / 2
+		if arr[m] < val {
 			l = m + 1
 		} else {
 			r = m
@@ -12,9 +13,10 @@ func CountInts(arr []int, val int) int {
 	}
 
 	l0 := l
-	l, r = 0, len(arr)
+	r = len(arr)
 	for l < r {
-		if m := (l + r) / 2; arr[m] <= val {
+		m := (l + r) / 2
+		if arr[m] == val {
 			l = m + 1
 		} else {
 			r = m
