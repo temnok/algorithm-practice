@@ -13,7 +13,7 @@ func TestMinPath_RandomCases(t *testing.T) {
 		expected := td.minPath
 		actual := MinPath(td.graph, td.start, td.end)
 
-		if !reflect.DeepEqual(expected, actual) {
+		if !(len(expected) == 0 && len(actual) == 0) && !reflect.DeepEqual(expected, actual) {
 			assert.FailNowf(t, "",
 				"MinPath(%v, %v, %v):\nwant %v\n got %v",
 				td.graph, td.start, td.end, expected, actual,
