@@ -29,7 +29,7 @@ func Contains(text string, strs []string) []bool {
 		}
 
 		cur = cur.next[char]
-		for suffix := cur; suffix.strEnd && !ans[suffix.strI]; suffix = suffix.suffix {
+		for suffix := cur; suffix.strEnd; suffix = suffix.suffix {
 			ans[suffix.strI] = true
 		}
 	}

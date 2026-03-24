@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Aho {
-    // Contains must implement Aho-Corasick algorithm.
+    // contains must implement Aho-Corasick algorithm.
     // Returned array should contain true at position i if strs[i] is found in text, false otherwise.
     // - strs contains unique non-empty strings
     public static boolean[] contains(String text, String[] strs) {
@@ -26,7 +26,7 @@ public class Aho {
             }
 
             cur = cur.next.get(chr);
-            for (var suffix = cur; suffix.strEnd && !ans[suffix.strI]; suffix = suffix.suffix) {
+            for (var suffix = cur; suffix.strEnd; suffix = suffix.suffix) {
                 ans[suffix.strI] = true;
             }
         }
