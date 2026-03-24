@@ -42,6 +42,12 @@ func TestContainsExamples(t *testing.T) {
 			strs: []string{"he", "she", "hers", "his", "him"},
 			want: []bool{true, true, true, true, false},
 		},
+		{
+			text: "cbbacbbdb",
+			strs: []string{"bbbaabbbaaaaaaabaab", "aabbab", "bbb", "abbaaa", "bbababaabaaabaaa", "aabb",
+				"a", "bbaba", "ba", "aaabaabbbbbbbbabbb"},
+			want: []bool{false, false, false, false, false, false, true, false, true, false},
+		},
 	}
 
 	for _, test := range tests {
