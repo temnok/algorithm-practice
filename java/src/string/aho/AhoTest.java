@@ -58,7 +58,7 @@ public class AhoTest {
             var got = Aho.contains(text, strs);
             var want = containsBruteForce(text, strs);
             if (!Arrays.equals(got, want)) {
-                Assert.fail(String.format("Aho.contains(%q, %q):\nwant %s\n got %s",
+                Assert.fail(String.format("Aho.contains(%s, %s):\nwant %s\n got %s",
                     text, Arrays.toString(strs), Arrays.toString(want), Arrays.toString(got)));
             }
         }
